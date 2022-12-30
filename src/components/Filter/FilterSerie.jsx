@@ -1,10 +1,12 @@
 import React from "react";
 
-function Filter ({foundSeries, handleInput}){
-    
+function Filter ({ handleInput}){
+    const handleSearch = (event) => {
+        handleInput(event.target.value)
+    }
     return (
         <div>
-            <input type="text" onChange={(event) => handleInput(event.target.value)}/>
+            <input type="text" onChange={(handleSearch)}/>
         </div>
     )
 }

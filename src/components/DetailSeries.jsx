@@ -1,21 +1,52 @@
 import React from "react";
-import {useParams} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import '../styles/DetailSerie.scss';
 
-function DetailSeries ({series}){
+function DetailSeries({ series, handleOption }) {
     const params = useParams();
-    const foundSerie = series.find((serie) => {
-        return serie.title === params.id;
-    })
+    const selectedSerie = series.find((serie) => {
+        return serie.id === parseInt(params.id);
+    });
+    const handleInput = (event) => {
+        handleOption(event.target.value)
+    }
+
     return (
-        <div>
-            <h2>{foundSerie.title}</h2>
-            <img src={foundSerie.picture} alt="" />
-            <p>{foundSerie.director}</p>
-            <p>{foundSerie.genre}</p>
-            <p>{foundSerie.platform}</p>
-            <p>{foundSerie.seasons}</p>
-            <p>{foundSerie.year}</p>
-            <p>{foundSerie.synopsis}</p>
+        <div className="serie">
+            <h2 className="serie__title">{selectedSerie.title}</h2>
+            <img src={selectedSerie.picture} alt="Foto Serie" className="serie__image" />
+            <div className="serie__datos">
+                <p className="serie__datos_subtitle"> DIRECTOR: </p>
+                {selectedSerie.director.map((item, index) => {
+                    return <ul key={index}>
+                        <li>{item}</li>
+                    </ul>
+                })}
+            </div>
+            <div className="serie__datos">
+                <p className="serie__datos_subtitle"> GENERO:</p>
+                {selectedSerie.genre.map((item, index) => {
+                    return <ul key={index}>
+                        <li>{item}</li>
+                    </ul>
+                })}
+            </div>
+            <div className="serie__datos">
+                <p className="serie__datos_subtitle"> PLATAFORMA:</p>
+                <p>{selectedSerie.platform}</p>
+            </div>
+            <div className="serie__datos">
+                <p className="serie__datos_subtitle"> TEMPORADAS: </p>
+                <p>{selectedSerie.seasons}</p>
+            </div>
+            <div className="serie__datos">
+                <p className="serie__datos_subtitle"> AÑO EMISION: </p>
+                <p>{selectedSerie.year}</p>
+            </div>
+            <div className="serie__datos">
+                <p>{selectedSerie.synopsis}</p>
+            </div>
+            <p ><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
         </div>
     )
 }
