@@ -1,50 +1,55 @@
-.serie{
-    background-color: #f5ebe0;
+.serie {
+  background-color: #f5ebe0;
+  border-radius: 20px;
+  &__title {
+    font-size: 60px;
+    color: #8a5a44;
+  }
+  &__image {
+    width: 30%;
     border-radius: 20px;
-    &__title{
-        font-size: 60px;
-        color: #8a5a44;
-    }
-    &__image{
-        width: 30%;
-        border-radius: 20px;
-    }
-    &__datos{
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         li{
-            list-style: none;
-         }
-         &_subtitle{
-            color: black;
-            font-weight: bold;
-         }
-    }
-    &__button{
-            padding-bottom: 20px;
-    }
+  }
   
+  &__button {
+    padding-bottom: 20px;
+  }
 }
 
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, 40px);
+    margin: auto;
+    width: 40%;
+    &__sinopsys{
+      grid-column: span 2;
+      font-size: 20px;
+    }
+    &__director_list, &__genre_list{
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+}
 
 .css-button-fully-rounded--grey {
-    min-width: 130px;
-    height: 20px;
-    color: #fff;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 20px;
-    border: 2px solid #495057;
-    background: #495057;
-  }
-  .css-button-fully-rounded--grey:hover {
-    background: #fff;
-    color: #495057
-  }
-
+  min-width: 130px;
+  height: 20px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 20px;
+  border: 2px solid #495057;
+  background: #495057;
+}
+.css-button-fully-rounded--grey:hover {
+  background: #fff;
+  color: #495057;
+}

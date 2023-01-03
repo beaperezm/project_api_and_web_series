@@ -15,36 +15,34 @@ function DetailSeries({ series, handleOption }) {
         <div className="serie">
             <h2 className="serie__title">{selectedSerie.title}</h2>
             <img src={selectedSerie.picture} alt="Foto Serie" className="serie__image" />
-            <div className="serie__datos">
-                <p className="serie__datos_subtitle"> DIRECTOR: </p>
-                {selectedSerie.director.map((item, index) => {
-                    return <ul key={index}>
-                        <li>{item}</li>
-                    </ul>
-                })}
-            </div>
-            <div className="serie__datos">
-                <p className="serie__datos_subtitle"> GENERO:</p>
-                {selectedSerie.genre.map((item, index) => {
-                    return <ul key={index}>
-                        <li>{item}</li>
-                    </ul>
-                })}
-            </div>
-            <div className="serie__datos">
-                <p className="serie__datos_subtitle"> PLATAFORMA:</p>
+            <div className="grid">
+
+                <p className="grid__director"> DIRECTOR: </p>
+                <ul className="grid__director_list">
+                    {selectedSerie.director.map((item, index) => {
+                        return <li>{item}</li>
+                    })}
+                </ul>
+                <p className="grid__genre"> GENERO:</p>
+                <ul className="grid__genre_list">
+                    {selectedSerie.genre.map((item, index) => {
+                        return <li>{item}</li>
+                    })}
+                </ul>
+
+                <p className="grid__platform"> PLATAFORMA:</p>
                 <p>{selectedSerie.platform}</p>
-            </div>
-            <div className="serie__datos">
-                <p className="serie__datos_subtitle"> TEMPORADAS: </p>
+
+                <p className="grid__seasons"> TEMPORADAS: </p>
                 <p>{selectedSerie.seasons}</p>
-            </div>
-            <div className="serie__datos">
-                <p className="serie__datos_subtitle"> AÑO EMISION: </p>
+
+
+                <p className="grid__year"> AÑO EMISION: </p>
                 <p>{selectedSerie.year}</p>
-            </div>
-            <div className="serie__datos">
-                <p>{selectedSerie.synopsis}</p>
+
+                <div className="grid__sinopsys">
+                    <p>{selectedSerie.synopsis}</p>
+                </div>
             </div>
             <p className="serie__button"><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
         </div>
