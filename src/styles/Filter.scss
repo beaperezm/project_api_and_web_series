@@ -1,0 +1,13 @@
+.divFilter{
+    top: 30px;
+    position: relative;
+}
+.filter{
+    position: absolute;
+    right: 20px;
+    &__label{
+        margin-right: 10px;
+        font-size: 20px;
+        color: #8a5a44;
+    }
+}

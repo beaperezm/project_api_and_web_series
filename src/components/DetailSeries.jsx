@@ -46,7 +46,7 @@ function DetailSeries({ series, handleOption }) {
             <div className="serie__datos">
                 <p>{selectedSerie.synopsis}</p>
             </div>
-            <p ><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
+            <p className="serie__button"><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
         </div>
     )
 }
