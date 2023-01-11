@@ -7,8 +7,8 @@ function DetailSeries({ series, handleOption }) {
     const selectedSerie = series.find((serie) => {
         return serie.id === parseInt(params.id);
     });
-    const handleInput = (event) => {
-        handleOption(event.target.value)
+    const handleInput = () => {
+        handleOption('All')
     }
 
     return (
@@ -20,13 +20,13 @@ function DetailSeries({ series, handleOption }) {
                 <p className="grid__director"> DIRECTOR: </p>
                 <ul className="grid__director_list">
                     {selectedSerie.director.map((item, index) => {
-                        return <li>{item}</li>
+                        return <li key={index}>{item}</li>
                     })}
                 </ul>
                 <p className="grid__genre"> GENERO:</p>
                 <ul className="grid__genre_list">
                     {selectedSerie.genre.map((item, index) => {
-                        return <li>{item}</li>
+                        return <li key={index}>{item}</li>
                     })}
                 </ul>
 
