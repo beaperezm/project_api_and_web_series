@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import '../../styles/Option.scss'
+import '../../styles/Option.scss';
 
 function Option({ series, handleOption, option }) {
     const serieId = series.map((serie) => {
         return serie.id;
     })
     const serieToString = serieId.toString();
-    console.log(serieId);
     return (
         <div className="divOption">
             <div className="option">
@@ -18,11 +17,9 @@ function Option({ series, handleOption, option }) {
                         return <option value={serie.title} key={index}>{serie.title}</option>
                     })}
                 </select>
-                
                 <Link to = {`selected/${serieToString}`}>
                 <input type="submit" />
                 </Link>
-                
             </div>
         </div>
     )

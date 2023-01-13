@@ -1,9 +1,8 @@
-
-const getDataApi = (page) => {
-    return fetch(`https://proyecto-react-api.vercel.app/series/paged?page=${page}`)
+const getAllSeries = () => {
+    return fetch(`https://proyecto-react-api.vercel.app/series`)
         .then((res) => res.json())
         .then((res) => {
-            const cleanData = res.movies.map((serie) => {
+            const cleanData = res.map((serie) => {
                 return {
                     id: serie.id,
                     title: serie.title,
@@ -20,4 +19,4 @@ const getDataApi = (page) => {
         });
 };
 
-export default getDataApi;
+export default getAllSeries;
