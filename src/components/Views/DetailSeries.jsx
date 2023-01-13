@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from 'react-router-dom';
-import '../styles/DetailSerie.scss';
+import '../../styles/DetailSerie.scss';
 
 function DetailSeries({ series, handleOption }) {
     const params = useParams();

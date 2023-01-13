@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import '../../styles/Option.scss';
 
-function Option({ series, handleOption, option }) {
+function Option({ series, handleOption, option, loader }) {
     const serieId = series.map((serie) => {
         return serie.id;
     })
     const serieToString = serieId.toString();
     return (
         <div className="divOption">
-            <div className="option">
+            <div className={`option ${!loader ? "display" :null}`}>
                 <label className="option__label" htmlFor="titulo">Titulo</label>
                 <select className="option__select" name="" id="titulo" value={option} onChange={(event) => handleOption(event.target.value)}>
                     <option value='All'>TODOS</option>

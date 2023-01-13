@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from 'axios';
-import '../../styles/Form.scss';
+import '../../styles/Register.scss';
 
-function Form (){
+function Register ({handleOption}){
     const [newUser, setNewUser] = useState({
         email: '',
         password: '',
@@ -11,6 +12,9 @@ function Form (){
 
     const handleChange = (event) => {
         setNewUser({...newUser, [event.target.id]: event.target.value})
+    }
+    const handleInput = () => {
+        handleOption('All')
     }
     const handleClick = (event) => {
         event.preventDefault();
@@ -31,8 +35,9 @@ function Form (){
                 <input type="text" className="form__input" id="password" onChange={handleChange} value={newUser.password}/>
                 <button onClick={handleClick}>Registrar</button>
             </form>
+            <p className="home__button"><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
         </div>
     )
 }
 
-export default Form; 
+export default Register; 

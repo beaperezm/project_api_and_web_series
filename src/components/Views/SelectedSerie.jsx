@@ -1,9 +1,7 @@
 import React from "react";
-import Serie from "./Series";
-import {useParams, Link} from 'react-router-dom'
+import Serie from "../Views/Series.jsx";
 
 function SelectedSerie({ series }) {
-   const params = useParams();
     const listSeries = series.map((serie, index) => {
         return <Serie serie={serie} key={index} />
     })

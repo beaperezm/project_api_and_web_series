@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import '../styles/Serie.scss'
+import '../../styles/Serie.scss'
 
 function Serie({ serie }) {
 

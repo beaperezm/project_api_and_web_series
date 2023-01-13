@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
-import '../../styles/Form.scss';
+import '../../styles/Login.scss';
 
-function Login (){
+function Login ({handleOption}){
     const [user, setUser] = useState({
         email: '',
         password: '',
@@ -13,26 +13,30 @@ function Login (){
     const handleChange = (event) => {
         setUser({...user, [event.target.id]: event.target.value})
     }
+    const handleInput = () => {
+        handleOption('All')
+    }
     const handleClick = (event) => {
         event.preventDefault();
         axios.post('https://proyecto-react-api.vercel.app/users/login', user)
         .then((response) => {
             console.log(response);
             if(response.status === 200){
-                navigate('/series')
+                navigate('/')
             }
         })
         setUser({email: '', password: ''})
     }
     return (
-        <div className="divForm">
-            <form action="" className="form">
-                <label className="form__label" htmlFor="email">Email</label>
-                <input type="text" className="form__input" id='email' onChange={handleChange} value={user.email}/>
-                <label className="form__label" htmlFor="password">Password</label>
-                <input type="text" className="form__input" id="password" onChange={handleChange} value={user.password}/>
-                <button onClick={handleClick}>Login</button>
+        <div className="divLogin">
+            <form action="" className="login">
+                <label className="login__label" htmlFor="email">Email</label>
+                <input type="text" className="login__input" id='email' onChange={handleChange} value={user.email}/>
+                <label className="login__label" htmlFor="password">Password</label>
+                <input type="password" className="login__input" id="password" onChange={handleChange} value={user.password}/>
+                <button className="button" onClick={handleClick}>Login</button>
             </form>
+            <p className="home__button"><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
         </div>
     )
 }
