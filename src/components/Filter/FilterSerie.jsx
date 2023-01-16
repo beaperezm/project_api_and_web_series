@@ -1,10 +1,12 @@
-import React from "react";
-import '../../styles/Filter.scss'
+import React, {useContext} from "react";
+import '../../styles/Filter.scss';
+import LoaderContext from "../../context/LoaderContext";
 
-function Filter({ handleInput, loader }) {
+function Filter({ handleInput }) {
     const handleSearch = (event) => {
         handleInput(event.target.value)
-    }
+    };
+    const loader = useContext(LoaderContext);
     return (
         <div className="divFilter">
             <div className={`filter ${!loader ? "display":null }`}>

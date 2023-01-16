@@ -1,5 +1,5 @@
 
-const getDataApi = (page) => {
+const getDataPaged = (page) => {
     return fetch(`https://proyecto-react-api.vercel.app/series/paged?page=${page}`)
         .then((res) => res.json())
         .then((res) => {
@@ -16,8 +16,9 @@ const getDataApi = (page) => {
                     picture: serie.picture
                 }
             });
+            console.log(cleanData);
             return cleanData;
         });
 };
 
-export default getDataApi;
+export default getDataPaged;
