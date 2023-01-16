@@ -3,6 +3,7 @@ const getDataPaged = (page) => {
     return fetch(`https://proyecto-react-api.vercel.app/series/paged?page=${page}`)
         .then((res) => res.json())
         .then((res) => {
+            const page = res.nextPage;
             const cleanData = res.movies.map((serie) => {
                 return {
                     id: serie.id,
@@ -13,10 +14,10 @@ const getDataPaged = (page) => {
                     seasons: serie.seasons,
                     synopsis: serie.synopsis,
                     year: serie.year,
-                    picture: serie.picture
+                    picture: serie.picture,
+                    page: page
                 }
             });
-            console.log(cleanData);
             return cleanData;
         });
 };

@@ -32,11 +32,14 @@ function App() {
       setLoader(true);
     })
     getDataPaged(page).then((response) => {
+      const nextPage = response.map((item)=> {
+        return item.page
+      })
       setSeries(response);
       setLoader(true);
       if (page <= 1) {
         setShowPreviousButton(false);
-      } else if (page >= 7) {
+      } else if (nextPage.includes(null)) {
         setShowNextButton(false);
       }
     })
