@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import Serie from "../Views/Series";
-import '../styles/ListSerie.scss'
+import '../styles/ListSerie.scss';
+import LoaderContext from "../context/LoaderContext";
 
-function ListSeries({ series, nextPage, previousPage, loader, showPreviousButton, showNextButton}) {
+function ListSeries({ series, nextPage, previousPage, showPreviousButton, showNextButton}) {
     const nextPageClick = () => {
         nextPage()
     }
@@ -12,6 +13,8 @@ function ListSeries({ series, nextPage, previousPage, loader, showPreviousButton
     const listSeries = series.map((serie, index) => {
         return <Serie serie={serie} key={index} />
     })
+    const loader = useContext(LoaderContext);
+
     return (
         <div className="divList">
             <h1 className={`title ${!loader ? "display": null}`}>SERIES MALEON</h1>

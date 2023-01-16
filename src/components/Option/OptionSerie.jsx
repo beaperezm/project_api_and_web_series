@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from 'react-router-dom';
 import '../../styles/Option.scss';
+import LoaderContext from "../../context/LoaderContext";
 
-function Option({ series, handleOption, option, loader }) {
+function Option({ series, handleOption, option }) {
     const serieId = series.map((serie) => {
         return serie.id;
     })
     const serieToString = serieId.toString();
+    const loader = useContext(LoaderContext);
     return (
         <div className="divOption">
             <div className={`option ${!loader ? "display" :null}`}>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import getDataApi from '../services/getDataApi.js';
+import getDataPaged from '../services/getDataPaged.js';
 import getAllSeries from '../services/getAllSeries.js';
 import DetailSeries from '../Views/DetailSeries.jsx';
 import ListSeries from '../Views/ListSeries.jsx';
@@ -12,6 +12,7 @@ import Login from '../Views/Login/Login.jsx';
 import '../styles/App.css';
 import Loader from '../Views/Loader.jsx';
 import UrlNotFound from '../Views/UrlNotFound/urlNotFound.jsx';
+import LoaderContext from '../context/LoaderContext.jsx';
 
 
 
@@ -30,7 +31,7 @@ function App() {
       setAllSeries(response);
       setLoader(true);
     })
-    getDataApi(page).then((response) => {
+    getDataPaged(page).then((response) => {
       setSeries(response);
       setLoader(true);
       if (page <= 1) {
@@ -71,10 +72,12 @@ function App() {
         <Route path='/' element={
           <>
             <Navigation />
-            <Filter loader={loader} handleInput={handleInput} search={search} series={filteredSerie} />
-            <Option loader={loader} series={selectedSerie} handleOption={handleOption} option={option} />
-            <ListSeries loader={loader} series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton}/>
-            <Loader loader={loader} />
+            <LoaderContext.Provider value={loader}>
+              <Filter handleInput={handleInput} search={search} series={filteredSerie} />
+              <Option series={selectedSerie} handleOption={handleOption} option={option} />
+              <ListSeries  series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton} />
+              <Loader />
+            </LoaderContext.Provider>
           </>
         } />
         <Route path='/register' element={<Register handleOption={handleOption} />} />
