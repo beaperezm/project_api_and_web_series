@@ -20,9 +20,11 @@ function Login ({handleOption}){
         event.preventDefault();
         axios.post('https://proyecto-react-api.vercel.app/users/login', user)
         .then((response) => {
-            console.log(response);
             if(response.status === 200){
                 navigate('/')
+            }else {
+                console.log(response);
+                // navigate('/register')
             }
         })
         setUser({email: '', password: ''})

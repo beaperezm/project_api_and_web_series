@@ -1,15 +1,17 @@
 import React from "react";
-import { Link, useParams } from 'react-router-dom';
-import '../../styles/DetailSerie.scss';
+import { useParams } from 'react-router-dom';
+import '../styles/DetailSerie.scss';
+import ButtonHome from '../components/ButtonHome/ButtonHome.jsx';
 
 function DetailSeries({ series, handleOption }) {
     const params = useParams();
     const selectedSerie = series.find((serie) => {
         return serie.id === parseInt(params.id);
     });
-    const handleInput = () => {
-        handleOption('All')
-    }
+
+    // const handleInput = () => {
+    //     handleOption('All')
+    // }
 
     return (
         <div className="serie">
@@ -44,7 +46,7 @@ function DetailSeries({ series, handleOption }) {
                     <p>{selectedSerie.synopsis}</p>
                 </div>
             </div>
-            <p className="serie__button"><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
+           <ButtonHome handleOption={handleOption}/>
         </div>
     )
 }

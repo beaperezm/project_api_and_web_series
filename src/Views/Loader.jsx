@@ -1,4 +1,4 @@
-import '../../styles/Loader.scss';
+import '../styles/Loader.scss';
 function Loader ({loader}){
     return(
         <div className={`loader ${loader ? "display" : null}`}></div>

@@ -1,8 +1,8 @@
 import React from "react";
 import Serie from "../Views/Series";
-import '../../styles/ListSerie.scss'
+import '../styles/ListSerie.scss'
 
-function ListSeries({ series, nextPage, previousPage, loader}) {
+function ListSeries({ series, nextPage, previousPage, loader, showPreviousButton, showNextButton}) {
     const nextPageClick = () => {
         nextPage()
     }
@@ -18,8 +18,8 @@ function ListSeries({ series, nextPage, previousPage, loader}) {
             <ul className="listSerie">
                 {listSeries}
             </ul>
-            <button className={`${!loader ? "display" : null}`} onClick={previousPageClick}> Página Anterior </button>
-            <button className={`${!loader ? "display" : null}`} onClick={nextPageClick}>Siguiente Página</button>
+            <button className={`${!loader ? "display" : null} ${!showPreviousButton ? "display" : null}`} onClick={previousPageClick}> Página Anterior </button>
+            <button className={`${!loader ? "display" : null} ${showNextButton ? "show" : "display"}`} onClick={nextPageClick}>Siguiente Página</button>
         </div>
 
     )
