@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import getDataApi from '../services/getDataApi.js';
 import getAllSeries from '../services/getAllSeries.js';
-import '../styles/App.css';
-import ListSeries from './ListSeries';
-import { Routes, Route } from 'react-router-dom';
-import DetailSeries from './DetailSeries.jsx';
-import Form from './Form/Form.jsx';
+import DetailSeries from '../Views/DetailSeries.jsx';
+import ListSeries from '../Views/ListSeries.jsx';
+import Register from '../Views/Register/Register.jsx';
 import Filter from './Filter/FilterSerie.jsx';
 import Option from './Option/OptionSerie.jsx';
-import SelectedSerie from './SelectedSerie.jsx';
-import Navigation from './Navigation.jsx';
-import Login from './Login/Login.jsx';
+import Navigation from '../Views/Navigation.jsx';
+import Login from '../Views/Login/Login.jsx';
+import '../styles/App.css';
+import Loader from '../Views/Loader.jsx';
+import UrlNotFound from '../Views/UrlNotFound/urlNotFound.jsx';
 
 
 
@@ -20,27 +21,35 @@ function App() {
   const [search, setSearch] = useState('');
   const [option, setOption] = useState('All');
   const [page, setPage] = useState(1);
+  const [loader, setLoader] = useState(false);
+  const [showNextButton, setShowNextButton] = useState(true);
+  const [showPreviousButton, setShowPreviousButton] = useState(false);
 
   useEffect(() => {
     getAllSeries().then((response) => {
-      setAllSeries(response)
+      setAllSeries(response);
+      setLoader(true);
     })
     getDataApi(page).then((response) => {
-      setSeries(response)
+      setSeries(response);
+      setLoader(true);
+      if (page <= 1) {
+        setShowPreviousButton(false);
+      } else if (page >= 7) {
+        setShowNextButton(false);
+      }
     })
     setOption(option)
-  }, [page, option]);
+  }, [page, option, showNextButton, showPreviousButton]);
 
 
   const nextPage = () => {
     setPage(page + 1)
+    setShowPreviousButton(true);
   }
   const previousPage = () => {
-    if (page <= 0) {
-      console.log('No existe la pagina');
-    } else {
-      setPage(page - 1)
-    }
+    setPage(page - 1)
+    setShowNextButton(true);
   }
 
   const handleInput = (value) => {
@@ -62,16 +71,17 @@ function App() {
         <Route path='/' element={
           <>
             <Navigation />
-            <Filter handleInput={handleInput} search={search} series={filteredSerie} />
-            <Option series={selectedSerie} handleOption={handleOption} option={option} />
-            <ListSeries series={filteredSerie} nextPage={nextPage} previousPage={previousPage} />
+            <Filter loader={loader} handleInput={handleInput} search={search} series={filteredSerie} />
+            <Option loader={loader} series={selectedSerie} handleOption={handleOption} option={option} />
+            <ListSeries loader={loader} series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton}/>
+            <Loader loader={loader} />
           </>
         } />
-        <Route path='/register' element={<Form />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register handleOption={handleOption} />} />
+        <Route path='/login' element={<Login handleOption={handleOption} />} />
         <Route path='/selected/:id' element={<DetailSeries series={selectedSerie} />} />
         <Route path='/detail/:id' element={<DetailSeries series={series} handleOption={handleOption} />} />
-        <Route path='*' element={`Página no encontrada, 404`} />
+        <Route path='*' element={<UrlNotFound />} />
       </Routes>
     </div>
   );
