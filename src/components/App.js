@@ -25,6 +25,10 @@ function App() {
   const [loader, setLoader] = useState(false);
   const [showNextButton, setShowNextButton] = useState(true);
   const [showPreviousButton, setShowPreviousButton] = useState(false);
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
 
   useEffect(() => {
     getAllSeries().then((response) => {
@@ -32,7 +36,7 @@ function App() {
       setLoader(true);
     })
     getDataPaged(page).then((response) => {
-      const nextPage = response.map((item)=> {
+      const nextPage = response.map((item) => {
         return item.page
       })
       setSeries(response);
@@ -55,14 +59,20 @@ function App() {
     setPage(page - 1)
     setShowNextButton(true);
   }
-
   const handleInput = (value) => {
     setSearch(value);
   }
-
   const handleOption = (value) => {
     setOption(value)
   }
+  const handleChange = (value) => {
+    setUser(value)
+  }
+  const handleClickValue = (value) => {
+    setUser({ email: '', password: '' })
+  }
+
+
   const filteredSerie = series.filter((serie) => {
     return serie.title.toLowerCase().includes(search);
   })
@@ -78,13 +88,13 @@ function App() {
             <LoaderContext.Provider value={loader}>
               <Filter handleInput={handleInput} search={search} series={filteredSerie} />
               <Option series={selectedSerie} handleOption={handleOption} option={option} />
-              <ListSeries  series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton} />
+              <ListSeries series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton} />
               <Loader />
             </LoaderContext.Provider>
           </>
         } />
-        <Route path='/register' element={<Register handleOption={handleOption} />} />
-        <Route path='/login' element={<Login handleOption={handleOption} />} />
+        <Route path='/register' element={<Register handleOption={handleOption} handleChange={handleChange} user={user} handleClickValue={handleClickValue} />} />
+        <Route path='/login' element={<Login handleOption={handleOption} handleChange={handleChange} user={user} handleClickValue={handleClickValue} />} />
         <Route path='/selected/:id' element={<DetailSeries series={selectedSerie} />} />
         <Route path='/detail/:id' element={<DetailSeries series={series} handleOption={handleOption} />} />
         <Route path='*' element={<UrlNotFound />} />

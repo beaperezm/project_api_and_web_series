@@ -1,44 +1,30 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import axios from 'axios';
+import Form from '../../components/Form/Form.jsx';
 import '../../styles/Login.scss';
+import ButtonHome from "../../components/ButtonHome/ButtonHome.jsx";
 
-function Login ({handleOption}){
-    const [user, setUser] = useState({
-        email: '',
-        password: '',
-    });
-    const navigate = useNavigate(); 
-    const handleChange = (event) => {
-        setUser({...user, [event.target.id]: event.target.value})
-    }
-    const handleInput = () => {
-        handleOption('All')
-    }
+function Login({ handleOption, handleChange, user, handleClickValue }) {
+
+    const navigate = useNavigate();
     const handleClick = (event) => {
         event.preventDefault();
         axios.post('https://proyecto-react-api.vercel.app/users/login', user)
-        .then((response) => {
-            if(response.status === 200){
-                navigate('/')
-            }else {
-                console.log(response);
-                // navigate('/register')
-            }
-        })
-        setUser({email: '', password: ''})
+            .then((response) => {
+                if (response.status === 200) {
+                    navigate('/')
+                } else {
+                    navigate('/register')
+                }
+                handleClickValue({ email: '', password: '' })
+            })
     }
     return (
         <div className="divLogin">
-            <form action="" className="login">
-                <label className="login__label" htmlFor="email">Email</label>
-                <input type="text" className="login__input" id='email' onChange={handleChange} value={user.email}/>
-                <label className="login__label" htmlFor="password">Password</label>
-                <input type="password" className="login__input" id="password" onChange={handleChange} value={user.password}/>
-                <button className="button" onClick={handleClick}>Login</button>
-            </form>
-            <p className="home__button"><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
+            <Form handleChange={handleChange} user={user} />
+            <button className="button" onClick={handleClick}>Login</button>
+            <ButtonHome handleOption={handleOption} />
         </div>
     )
 }
