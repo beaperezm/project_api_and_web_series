@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import getDataPaged from '../services/getDataPaged.js';
 import getAllSeries from '../services/getAllSeries.js';
 import DetailSeries from '../Views/DetailSeries.jsx';
@@ -13,6 +13,9 @@ import '../styles/App.css';
 import Loader from '../Views/Loader.jsx';
 import UrlNotFound from '../Views/UrlNotFound/urlNotFound.jsx';
 import LoaderContext from '../context/LoaderContext.jsx';
+import { getLocal, setLocal } from '../services/localStorage.js';
+import IsLogged from '../Views/Login/isLogged.jsx';
+import ButtonLogin from './Button/Button.jsx';
 
 
 
@@ -29,6 +32,12 @@ function App() {
     email: '',
     password: '',
   });
+  const [isRegistered, setIsRegistered] = useState(getLocal('users', [{
+    email: '',
+    password: ''
+  }]));
+  const [isLogged, setIsLogged] = useState(false);
+
 
   useEffect(() => {
     getAllSeries().then((response) => {
@@ -66,12 +75,15 @@ function App() {
     setOption(value)
   }
   const handleChange = (value) => {
-    setUser(value)
+    setUser(value);
   }
   const handleClickValue = (value) => {
     setUser({ email: '', password: '' })
   }
 
+  const handleClickLogin = (value) => {
+
+  }
 
   const filteredSerie = series.filter((serie) => {
     return serie.title.toLowerCase().includes(search);
@@ -84,7 +96,7 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-            <Navigation />
+            {!isLogged ? <Navigation isLogged={isLogged}/> : <IsLogged isRegistered={isRegistered} setIsLogged={setIsLogged} />}
             <LoaderContext.Provider value={loader}>
               <Filter handleInput={handleInput} search={search} series={filteredSerie} />
               <Option series={selectedSerie} handleOption={handleOption} option={option} />
@@ -93,8 +105,8 @@ function App() {
             </LoaderContext.Provider>
           </>
         } />
-        <Route path='/register' element={<Register handleOption={handleOption} handleChange={handleChange} user={user} handleClickValue={handleClickValue} />} />
-        <Route path='/login' element={<Login handleOption={handleOption} handleChange={handleChange} user={user} handleClickValue={handleClickValue} />} />
+        <Route path='/register' element={<Register handleOption={handleOption} handleChange={handleChange} user={user} handleClickValue={handleClickValue} isRegistered={isRegistered} setIsRegistered={setIsRegistered} />} />
+        <Route path='/login' element={<Login handleOption={handleOption} handleChange={handleChange} user={user} handleClickValue={handleClickValue} setIsLogged={setIsLogged} />} />
         <Route path='/selected/:id' element={<DetailSeries series={selectedSerie} />} />
         <Route path='/detail/:id' element={<DetailSeries series={series} handleOption={handleOption} />} />
         <Route path='*' element={<UrlNotFound />} />
