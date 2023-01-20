@@ -1,18 +1,23 @@
 import axios from "axios";
 
-const getDataRegister = (user) => {
-    axios.post('https://proyecto-react-api.vercel.app/users/register', user)
-            .then((response) => {
 
-                // CAMBIADO  A newUser en lugar de user
+const getDataRegister = (user) => {
+    const result = {
+        ok: true,
+        mal: false
+    }
+    return axios.post('https://proyecto-react-api.vercel.app/users/register', user)
+            .then((response) => {
                 if (response) {
-                    alert('Registrado con exito')
+                    return result.ok
                 }
             })
-
             .catch((error) => {
-                console.log(error.response.data)
+                if (error) {
+                    return result.mal
+                }
             })
+            
 };
 
 export default getDataRegister;

@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 // ---- CAMBIADO A FormLogin
 import FormLogin from '../../components/Form/FormLogin.jsx';
 
@@ -15,7 +13,6 @@ function Login({ handleOption, handleChangeLogin, user, handleClickValueLogin, s
     
     return (
         <div className="divLogin">
-
     {/* CAMBIADO A <FormLogin handleChangeLogin={handleChangeLogin} user={user} /> 
    antes estaba como: Form <FormLogin handleChange={handleChange} user={user} />*/}
             <FormLogin setIsLogged={setIsLogged} handleChangeLogin={handleChangeLogin} user={user} setUserLogged={setUserLogged} handleClickValueLogin={handleClickValueLogin}/>

@@ -1,6 +1,5 @@
 import React from "react";
 
-
 //CAMBIADO EL DESTRUCTURING A isLogin en lugar de isRegistered
 function IsLogged ({ setIsLogged, userLogged}){
     const handleLogout = () => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import getDataPaged from '../services/getDataPaged.js';
 import getAllSeries from '../services/getAllSeries.js';
 import DetailSeries from '../Views/DetailSeries.jsx';
@@ -15,6 +15,8 @@ import UrlNotFound from '../Views/UrlNotFound/urlNotFound.jsx';
 import LoaderContext from '../context/LoaderContext.jsx';
 import IsLogged from '../Views/Login/isLogged.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
+import ModalForm from './Modal/ModalForm.jsx';
+
 
 function App() {
   const [allSeries, setAllSeries] = useState([]);
@@ -35,6 +37,7 @@ function App() {
     email: ''
   })
   const [isLogged, setIsLogged] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
 
   useEffect(() => {
@@ -55,7 +58,7 @@ function App() {
       }
     })
     setOption(option)
-  }, [page, option, showNextButton, showPreviousButton]);
+  }, [page, option, showNextButton, showPreviousButton, isRegistered]);
 
 
   const nextPage = () => {
@@ -109,6 +112,8 @@ function App() {
         <Route path='/' element={
           <>
             {/* CAMBIADO A isLogin={isLogin} en lugar de isRegistered={isRegistered} */}
+            {isLogged ? <ModalForm title={'Login'} body={'¡TE HAS LOGUEADO CON ÉXITO!'}/> : null}
+            {isRegistered ? <ModalForm title={'Registro'} body={'¡TE HAS REGISTRADO CON ÉXITO!'}/> : null}
             {!isLogged ? <Navigation /> : <IsLogged setIsLogged={setIsLogged} userLogged={userLogged} />}
             <LoaderContext.Provider value={loader}>
               <Filter handleInput={handleInput} />
@@ -124,7 +129,7 @@ function App() {
         ---> CAMBIADO A newUser={newUser} en lugar de user={user}
         ---> CAMBIADO A handleClickValueRegister={handleClickValueRegister} handleClickValue={handleClickValue}
         */}
-        <Route path='/register' element={<Register handleOption={handleOption} handleChangeRegister={handleChangeRegister} user={user} handleClickValueRegister={handleClickValueRegister} />} />
+        <Route path='/register' element={<Register handleOption={handleOption} handleChangeRegister={handleChangeRegister} user={user} handleClickValueRegister={handleClickValueRegister} setIsRegistered={setIsRegistered}/>} />
 
         {/* 
         ---> CAMBIADO  A handleChangeLogin={handleChangeLogin} en lugar de handleChange={handleChange} 
