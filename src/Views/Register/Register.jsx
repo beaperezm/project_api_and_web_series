@@ -1,35 +1,41 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import Form from '../../components/Form/Form.jsx';
-import '../../styles/Register.scss';
-import ButtonHome from "../../components/ButtonHome/ButtonHome.jsx";
-import {setLocal, getLocal} from '../../services/localStorage.js';
 
-function Register({ handleOption, user, handleChange, handleClickValue, setIsRegistered}) {
+// ---- CAMBIADO A FormRegister
+import FormRegister from '../../components/Form/FormRegister.jsx';
+
+//---AÑADIDO EL scss (he creado el fichero de cero)
+import '../../styles/Register.scss';
+
+
+import ButtonHome from "../../components/ButtonHome/ButtonHome.jsx";
+
+
+
+
+// CAMBIADO EL DESTRUCTURING A 
+// ---> handleChangeRegister en lugar handleChange
+// ---> newUser en lugar de user
+// ---> handleClickValueRegister en lugar de handleClickValue
+function Register({ handleOption, user, handleChangeRegister, handleClickValueRegister }) {
+
     // useEffect(() => {
     //     setIsRegistered(getLocal('users', []))
     // }, [])
-    
-    const handleClick = (event) => {
-        event.preventDefault();
-        axios.post('https://proyecto-react-api.vercel.app/users/register', user)
-            .then((response) => {
-                setIsRegistered(setLocal('users', user))
-                
 
-                // if (response.status === 201) {
-                //     alert('Registrado con exito')
-                // }
-            })
-            // .then((data) => {
-            //     setLocal('users', 'prueba')
-            // })
-        handleClickValue({ email: '', password: '' })
-    }
+    
+
+
     return (
-        <div className="divForm">
-            <Form handleChange={handleChange} user={user} />
-            <button onClick={handleClick}>Registrar</button>
+        // CAMBIADO EL CLASSNAME A divRegister en lugar de divLogin
+        <div className="divRegister">
+
+            {/* CAMBIADO A <FormRegister handleChangeRegister={handleChangeRegister} newUser={newUser} />
+   antes estaba como: Form <FormLogin handleChange={handleChange} user={user} />*/}
+            <FormRegister handleChangeRegister={handleChangeRegister} user={user} handleClickValueRegister={handleClickValueRegister}/>
+
+
+            
             <ButtonHome handleOption={handleOption} />
         </div>
     )

@@ -1,0 +1,16 @@
+.divRegister {
+    .register {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 200px;
+      gap: 10px;
+      &__label {
+        font-size: 20px;
+        color: #8a5a44;
+      }
+      &__input {
+        width: 300px;
+      }
+    }
+}

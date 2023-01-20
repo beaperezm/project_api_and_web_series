@@ -13,11 +13,8 @@ import '../styles/App.css';
 import Loader from '../Views/Loader.jsx';
 import UrlNotFound from '../Views/UrlNotFound/urlNotFound.jsx';
 import LoaderContext from '../context/LoaderContext.jsx';
-import { getLocal, setLocal } from '../services/localStorage.js';
 import IsLogged from '../Views/Login/isLogged.jsx';
-import ButtonLogin from './Button/Button.jsx';
-
-
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 
 function App() {
   const [allSeries, setAllSeries] = useState([]);
@@ -29,13 +26,14 @@ function App() {
   const [showNextButton, setShowNextButton] = useState(true);
   const [showPreviousButton, setShowPreviousButton] = useState(false);
   const [user, setUser] = useState({
+    nickname: '',
     email: '',
     password: '',
+    confirmPassword: ''
   });
-  const [isRegistered, setIsRegistered] = useState(getLocal('users', [{
-    email: '',
-    password: ''
-  }]));
+  const [userLogged, setUserLogged] = useState({
+    email: ''
+  })
   const [isLogged, setIsLogged] = useState(false);
 
 
@@ -74,16 +72,30 @@ function App() {
   const handleOption = (value) => {
     setOption(value)
   }
-  const handleChange = (value) => {
+
+  //CAMBIADO A const handleChangeLogin en lugar de handleChange
+  const handleChangeLogin = (value) => {
     setUser(value);
   }
-  const handleClickValue = (value) => {
+  //CREADA ESTA FUNCIÓN MANEJADORA
+  const handleChangeRegister = (value) => {
+    setUser(value);
+  }
+
+
+  //CAMBIADO NOMBRE A const handleClickValueLogin en lugar de handleClickValue
+  const handleClickValueLogin = (value) => {
     setUser({ email: '', password: '' })
   }
 
-  const handleClickLogin = (value) => {
-
+  //CREADA ESTA FUNCIÓN MANEJADORA
+  const handleClickValueRegister = (value) => {
+    setUser({ nickname: '', email: '', password: '', confirmPassword: '' })
   }
+
+  // const handleClickLogin = (value) => {
+
+  // }
 
   const filteredSerie = series.filter((serie) => {
     return serie.title.toLowerCase().includes(search);
@@ -96,19 +108,33 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-            {!isLogged ? <Navigation isLogged={isLogged}/> : <IsLogged isRegistered={isRegistered} setIsLogged={setIsLogged} />}
+            {/* CAMBIADO A isLogin={isLogin} en lugar de isRegistered={isRegistered} */}
+            {!isLogged ? <Navigation /> : <IsLogged setIsLogged={setIsLogged} userLogged={userLogged} />}
             <LoaderContext.Provider value={loader}>
-              <Filter handleInput={handleInput} search={search} series={filteredSerie} />
+              <Filter handleInput={handleInput} />
               <Option series={selectedSerie} handleOption={handleOption} option={option} />
               <ListSeries series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton} />
               <Loader />
             </LoaderContext.Provider>
           </>
         } />
-        <Route path='/register' element={<Register handleOption={handleOption} handleChange={handleChange} user={user} handleClickValue={handleClickValue} isRegistered={isRegistered} setIsRegistered={setIsRegistered} />} />
-        <Route path='/login' element={<Login handleOption={handleOption} handleChange={handleChange} user={user} handleClickValue={handleClickValue} setIsLogged={setIsLogged} />} />
-        <Route path='/selected/:id' element={<DetailSeries series={selectedSerie} />} />
-        <Route path='/detail/:id' element={<DetailSeries series={series} handleOption={handleOption} />} />
+
+        {/* 
+        ---> CAMBIADO  A handleChangeRegister={handleChangeRegister} en lugar de handleChange={handleChange} 
+        ---> CAMBIADO A newUser={newUser} en lugar de user={user}
+        ---> CAMBIADO A handleClickValueRegister={handleClickValueRegister} handleClickValue={handleClickValue}
+        */}
+        <Route path='/register' element={<Register handleOption={handleOption} handleChangeRegister={handleChangeRegister} user={user} handleClickValueRegister={handleClickValueRegister} />} />
+
+        {/* 
+        ---> CAMBIADO  A handleChangeLogin={handleChangeLogin} en lugar de handleChange={handleChange} 
+        ---> CAMBIADO A handleClickValueLogin={handleClickValueLogin} en lugar de handleClickValue={handleClickValue}
+        */}
+        <Route path='/login' element={<Login handleOption={handleOption} handleChangeLogin={handleChangeLogin} user={user} handleClickValueLogin={handleClickValueLogin} setIsLogged={setIsLogged} setUserLogged={setUserLogged} userLogged={userLogged} />} />
+
+
+        <Route path='/selected/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={selectedSerie} />} />} />
+        <Route path='/detail/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={series} handleOption={handleOption} />} />} />
         <Route path='*' element={<UrlNotFound />} />
       </Routes>
     </div>
