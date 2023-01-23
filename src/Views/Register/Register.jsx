@@ -4,7 +4,7 @@ import FormRegister from '../../components/Form/FormRegister.jsx';
 
 
 //---AÑADIDO EL scss (he creado el fichero de cero)
-import '../../styles/Register.scss';
+import '../../styles/Form/Register.scss';
 
 import ButtonHome from "../../components/ButtonHome/ButtonHome.jsx";
 

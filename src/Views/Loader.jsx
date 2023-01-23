@@ -1,4 +1,4 @@
-import '../styles/Loader.scss';
+import '../styles/Loader/Loader.scss';
 import {useContext} from 'react';
 import LoaderContext from '../context/LoaderContext';
 

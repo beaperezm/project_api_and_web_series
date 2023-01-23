@@ -1,0 +1,35 @@
+@import "../core/colors";
+
+.listSerie{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.title{
+    font-family: "font2";
+    font-size: 60px;
+    color: $color-secondary;
+}
+.divList{
+    padding-top: 60px;
+}
+.show{
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    outline: none;
+    border-radius: 20px;
+    border: 2px solid #495057;
+    background: #495057;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+.show:hover{
+    background: #fff;
+    color: #495057;
+}
+.hidden{
+    display: none;
+  }

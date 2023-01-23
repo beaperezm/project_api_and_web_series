@@ -1,7 +1,7 @@
 import React from 'react'
 
 //---- CAMBIADO A FormLogin
-import '../../styles/FormLogin.scss'
+import '../../styles/Form/FormLogin.scss';
 import getDataLogin from "../../services/getDataLogin.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';

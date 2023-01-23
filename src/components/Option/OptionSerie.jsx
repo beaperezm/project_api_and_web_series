@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
-import '../../styles/Option.scss';
+import '../../styles/Filters/Option.scss';
 import LoaderContext from "../../context/LoaderContext";
 
 function Option({ series, handleOptionInput, option }) {
@@ -10,7 +10,7 @@ function Option({ series, handleOptionInput, option }) {
     const serieToString = serieId.toString();
     const isLoaded = useContext(LoaderContext);
     return (
-        <div className="divOption">
+        <section className="divOption">
             <div className={`option ${!isLoaded ? "display" : null}`}>
                 <label className="option__label" htmlFor="titulo">Titulo</label>
                 <select className="option__select" name="" id="titulo" value={option} onChange={(event) => handleOptionInput(event.target.value)}>
@@ -19,11 +19,11 @@ function Option({ series, handleOptionInput, option }) {
                         return <option value={serie.title} key={index}>{serie.title}</option>
                     })}
                 </select>
-                <Link to={`selected/${serieToString}`}>
-                    <button className="css-button-fully-rounded--grey">Elegir</button>
+                <Link to={`selected/${serieToString}`} className='option__select_link'>
+                    <button className="option__select_button">Enviar</button>
                 </Link>
             </div>
-        </div>
+        </section>
     )
 }
 

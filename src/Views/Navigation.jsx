@@ -6,13 +6,13 @@ import '../styles/Navigation.scss';
 function Navigation({isLogged}) {
     const isLoaded = useContext(LoaderContext)
     return (
-        <div>
+        <header>
             <nav className={`navigation ${!isLoaded ? "display" : null}`}>
                 <ul className='navigation__list'>
                 {!isLogged ? <Button /> : null}
                 </ul>
             </nav>
-        </div>
+        </header>
     )
 }
 

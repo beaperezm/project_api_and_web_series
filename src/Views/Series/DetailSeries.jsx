@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import '../styles/DetailSerie.scss';
-import ButtonHome from '../components/ButtonHome/ButtonHome.jsx';
+import '../../styles/Series/DetailSerie.scss';
+import ButtonHome from '../../components/ButtonHome/ButtonHome.jsx';
 
 function DetailSeries({ series, handleOption }) {
     const params = useParams();

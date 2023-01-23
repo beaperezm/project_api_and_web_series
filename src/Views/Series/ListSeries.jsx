@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
-import Serie from "../Views/Series";
-import '../styles/ListSerie.scss';
-import LoaderContext from "../context/LoaderContext";
+import Serie from "./Series";
+import '../../styles/Series/ListSerie.scss';
+import LoaderContext from "../../context/LoaderContext";
 
 function ListSeries({ series, nextPage, previousPage, showPreviousButton, showNextButton}) {
     const nextPageClick = () => {
@@ -16,14 +16,14 @@ function ListSeries({ series, nextPage, previousPage, showPreviousButton, showNe
     const isLoaded = useContext(LoaderContext);
 
     return (
-        <div className="divList">
+        <main className="divList">
             <h1 className={`title ${!isLoaded ? "display": null}`}>SERIES MALEON</h1>
             <ul className="listSerie">
                 {listSeries}
             </ul>
-            <button className={`${!isLoaded ? "display" : null} ${!showPreviousButton ? "display" : null}`} onClick={previousPageClick}> Página Anterior </button>
-            <button className={`${!isLoaded ? "display" : null} ${showNextButton ? "show" : "display"}`} onClick={nextPageClick}>Siguiente Página</button>
-        </div>
+            <button className={`${!isLoaded ? "hidden" : null} ${!showPreviousButton ? "hidden" : "show"}`} onClick={previousPageClick}> Página Anterior </button>
+            <button className={`${!isLoaded ? "hidden" : null} ${showNextButton ? "show" : "hidden"}`} onClick={nextPageClick}>Siguiente Página</button>
+        </main>
 
     )
 }

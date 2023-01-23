@@ -1,7 +1,7 @@
 import React from "react";
 
 // ---- CAMBIADO A FormLogin
-import   '../../styles/Login.scss';
+import   '../../styles/Form/Login.scss';
 import FormLogin from '../../components/Form/FormLogin.jsx';
 import ButtonHome from "../../components/ButtonHome/ButtonHome.jsx";
 

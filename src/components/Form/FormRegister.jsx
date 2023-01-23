@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 //CREADO EL FormRegister.scss de 0
-import '../../styles/FormRegister.scss';
+import '../../styles/Form/FormRegister.scss';
 import getDataRegister from '../../services/getDataRegister.js';
 import { useNavigate } from 'react-router-dom';
 import confetti from 'canvas-confetti';

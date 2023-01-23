@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import '../../styles/Filter.scss';
+import '../../styles/Filters/Filter.scss';
 import LoaderContext from "../../context/LoaderContext";
 
 function Filter({ handleSearchInput }) {
@@ -8,12 +8,12 @@ function Filter({ handleSearchInput }) {
     };
     const isLoaded = useContext(LoaderContext);
     return (
-        <div className="divFilter">
+        <section className="divFilter">
             <div className={`filter ${!isLoaded ? "display":null }`}>
-                <label className="filter__label" htmlFor="">Filtra por Nombre</label>
-                <input className="filter__input" type="text" onChange={(handleSearch)} />
+                <label className="filter__label" htmlFor="">Buscar</label>
+                <input className="filter__input" type="text" onChange={(handleSearch)} placeholder='Título de Serie' />
             </div>
-        </div>
+        </section>
     )
 }
 

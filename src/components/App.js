@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import getDataPaged from '../services/getDataPaged.js';
 import getAllSeries from '../services/getAllSeries.js';
-import DetailSeries from '../Views/DetailSeries.jsx';
-import ListSeries from '../Views/ListSeries.jsx';
+import DetailSeries from '../Views/Series/DetailSeries.jsx';
+import ListSeries from '../Views/Series/ListSeries.jsx';
 import Register from '../Views/Register/Register.jsx';
 import Filter from './Filter/Filter.jsx';
 import Option from './Option/OptionSerie.jsx';
@@ -17,7 +17,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 import ModalForm from '../Views/Modal/ModalForm.jsx';
 import Footer from './Footer/Footer.jsx';
 import '../styles/App.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
@@ -99,6 +99,14 @@ function App() {
   const handleClickValueRegister = () => {
     setUser({ nickname: '', email: '', password: '', confirmPassword: '' })
   };
+  //Resetea los valores del profile email
+  const handleClickValueLoggedEmail = () => {
+    setUserLoggedEmail({email: ''})
+  };
+  //Resetea los valores del profile nickname
+  const handleClickValueLoggedNickname = () => {
+    setUserLoggedNickname({nickname: ''})
+  }
 
   const filteredSerie = series.filter((serie) => {
     return serie.title.toLowerCase().includes(search);
@@ -113,9 +121,8 @@ function App() {
           <>
             {isLogged ? <ModalForm title={'Login'} body={'¡TE HAS LOGUEADO CON ÉXITO!'} setIsLogged={setIsLogged} userLoggedEmail={userLoggedEmail} userLoggedNickname={userLoggedNickname}/> : null}
             {isRegistered ? <ModalForm title={'Registro'} body={'¡TE HAS REGISTRADO CON ÉXITO!'} /> : null}
-
             <LoaderContext.Provider value={isLoaded}>
-              {!isLogged ? <Navigation isLoaded={isLoaded} /> : <IsLogged setIsLogged={setIsLogged} userLoggedNickname={userLoggedNickname} userLoggedEmail={userLoggedEmail} />}
+              {!isLogged ? <Navigation isLoaded={isLoaded} /> : <IsLogged setIsLogged={setIsLogged} userLoggedNickname={userLoggedNickname} userLoggedEmail={userLoggedEmail} handleClickValueLoggedEmail={handleClickValueLoggedEmail} handleClickValueLoggedNickname={handleClickValueLoggedNickname}/>}
               <Filter handleSearchInput={handleSearchInput} />
               <Option series={selectedSerie} handleOptionInput={handleOptionInput} option={option} />
               <ListSeries series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton} />
@@ -129,7 +136,7 @@ function App() {
         <Route path='/detail/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={series} handleOptionInput={handleOptionInput} />} />} />
         <Route path='*' element={<UrlNotFound />} />
       </Routes>
-      <Footer />
+      {isLoaded ? <Footer /> : null }
     </div>
   );
 }

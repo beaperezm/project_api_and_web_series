@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import '../../styles/ButtonHome.scss';
+import '../../styles/Button/ButtonHome.scss';
 
 function ButtonHome ({ handleOptionInput }) {
     const handleClick = () => {

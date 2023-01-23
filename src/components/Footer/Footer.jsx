@@ -4,10 +4,10 @@ import '../../styles/Footer.scss';
 
 function Footer () {
     return (
-        <div className="footer">
-           <a href="https://github.com/torresmald" className="footer__link"><p className="footer__gitIcon"><AiFillGithub /> Jonathan Torres</p> </a> 
+        <footer className="footer">
+           <a href="https://github.com/torresmald" className="footer__link"><p className="footer__gitIcon"><AiFillGithub /> Jonathan Torres Maldonado</p> </a> 
             <a href="https://github.com/beaperezm/" className="footer__link"><p className="footer__gitIcon"><AiFillGithub /> Beatriz Pérez-Medel León</p> </a>
-        </div>
+        </footer>
     )
 }
 

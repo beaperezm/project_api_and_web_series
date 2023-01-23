@@ -1,18 +1,19 @@
 import React from "react";
+import '../../styles/Profile/isLogged.scss';
 
-function IsLogged ({ setIsLogged, userLoggedEmail, userLoggedNickname}){
+function IsLogged ({ setIsLogged, userLoggedEmail, userLoggedNickname, handleClickValueLoggedEmail, handleClickValueLoggedNickname}){
     const handleLogout = () => {
+        handleClickValueLoggedEmail();
+        handleClickValueLoggedNickname();
         setIsLogged(false)
     }
-    console.log(userLoggedEmail);
-    console.log(userLoggedNickname);
     return (
-        <div className="">
-            <h3>BIENVENID@</h3> 
-            <p>EMAIL: {userLoggedEmail}</p>
-            <p>NICKNAME: {userLoggedNickname}</p>
-            <button className="css-button-fully-rounded--grey"  onClick={handleLogout}>Logout</button>
-        </div>
+        <header className="profile">
+            <h3 className="profile__title">BIENVENID@</h3> 
+            <p className="profile__data">EMAIL: {userLoggedEmail}</p>
+            <p className="profile__data">NICKNAME: {userLoggedNickname}</p>
+            <button className="profile__logout"  onClick={handleLogout}>Logout</button>
+        </header>
     )
 }
 
