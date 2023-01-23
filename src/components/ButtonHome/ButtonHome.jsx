@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import '../../styles/ButtonHome.scss';
 
-function ButtonHome ({ handleOption }) {
-    const handleInput = () => {
-        handleOption('All')
+function ButtonHome ({ handleOptionInput }) {
+    const handleClick = () => {
+        handleOptionInput('All')
     }
     return (
-        <p className="serie__button"><Link className="css-button-fully-rounded--grey " to="/" onClick={handleInput}>HOME</Link></p>
+        <p className="serie__button"><Link className="css-button-fully-rounded--grey " to="/" onClick={handleClick}>HOME</Link></p>
     );
 };
 

@@ -1,22 +1,27 @@
 import axios from "axios";
 
 const getDataLogin = (user) => {
-    const result = {
-        ok: true,
-        mal: false
-    }
+    const userDB = {
+        nickname: '',
+        email: '',
+        goodResult: false,
+        badResult: false
+        }
     return axios.post('https://proyecto-react-api.vercel.app/users/login', user)
         .then((response) => {
             if (response) {
-                return result.ok
+                userDB.goodResult = true;
+                userDB.email = response.data.email;
+                userDB.nickname = response.data.nickname;
+                return userDB;
             }
         })
         .catch((error) => {
             if (error) {
-                return result.mal
+                userDB.badResult = true
+                return userDB;
             }
-        })
-
+        });
 };
 
 

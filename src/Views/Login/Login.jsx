@@ -1,22 +1,18 @@
 import React from "react";
 
 // ---- CAMBIADO A FormLogin
+import   '../../styles/Login.scss';
 import FormLogin from '../../components/Form/FormLogin.jsx';
-
-
-import '../../styles/Login.scss';
 import ButtonHome from "../../components/ButtonHome/ButtonHome.jsx";
 
-
-// CAMBIADO EL DESTRUCTURING A handleChangeLogin en lugar handleChange y handleClickValueLogin en lugar handleClickValue
-function Login({ handleOption, handleChangeLogin, user, handleClickValueLogin, setIsLogged, setUserLogged }) {
+function Login({ handleOption, handleChangeLogin, user, handleResetValueLogin, setIsLogged, setUserLoggedEmail, setUserLoggedNickname, userLoggedNickname, userLoggedEmail}) {
     
     return (
         <div className="divLogin">
-    {/* CAMBIADO A <FormLogin handleChangeLogin={handleChangeLogin} user={user} /> 
-   antes estaba como: Form <FormLogin handleChange={handleChange} user={user} />*/}
-            <FormLogin setIsLogged={setIsLogged} handleChangeLogin={handleChangeLogin} user={user} setUserLogged={setUserLogged} handleClickValueLogin={handleClickValueLogin}/>
+            <FormLogin setUserLoggedNickname={setUserLoggedNickname} setUserLoggedEmail={setUserLoggedEmail} handleChangeLogin={handleChangeLogin} user={user} handleResetValueLogin={handleResetValueLogin} userLoggedNickname={userLoggedNickname} userLoggedEmail={userLoggedEmail} setIsLogged={setIsLogged}/>
+            <div className="divLogin__buttonHome">
             <ButtonHome handleOption={handleOption} />
+            </div>
         </div>
     )
 }

@@ -1,13 +1,16 @@
 import React from "react";
 
-//CAMBIADO EL DESTRUCTURING A isLogin en lugar de isRegistered
-function IsLogged ({ setIsLogged, userLogged}){
+function IsLogged ({ setIsLogged, userLoggedEmail, userLoggedNickname}){
     const handleLogout = () => {
         setIsLogged(false)
     }
+    console.log(userLoggedEmail);
+    console.log(userLoggedNickname);
     return (
         <div className="">
-            <p>{userLogged}</p>
+            <h3>BIENVENID@</h3> 
+            <p>EMAIL: {userLoggedEmail}</p>
+            <p>NICKNAME: {userLoggedNickname}</p>
             <button className="css-button-fully-rounded--grey"  onClick={handleLogout}>Logout</button>
         </div>
     )

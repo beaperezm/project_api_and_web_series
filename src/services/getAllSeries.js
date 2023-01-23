@@ -2,7 +2,7 @@ const getAllSeries = () => {
     return fetch(`https://proyecto-react-api.vercel.app/series`)
         .then((res) => res.json())
         .then((res) => {
-            const cleanData = res.map((serie) => {
+            const data = res.map((serie) => {
                 return {
                     id: serie.id,
                     title: serie.title,
@@ -15,7 +15,7 @@ const getAllSeries = () => {
                     picture: serie.picture
                 }
             });
-            return cleanData;
+            return data;
         });
 };
 

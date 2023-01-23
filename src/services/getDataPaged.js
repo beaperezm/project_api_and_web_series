@@ -4,7 +4,7 @@ const getDataPaged = (page) => {
         .then((res) => res.json())
         .then((res) => {
             const page = res.nextPage;
-            const cleanData = res.movies.map((serie) => {
+            const data = res.movies.map((serie) => {
                 return {
                     id: serie.id,
                     title: serie.title,
@@ -18,7 +18,7 @@ const getDataPaged = (page) => {
                     page: page
                 }
             });
-            return cleanData;
+            return data;
         });
 };
 

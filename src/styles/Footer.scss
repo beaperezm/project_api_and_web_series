@@ -1,0 +1,19 @@
+.footer{
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    bottom: 0%;
+    gap: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &__link{
+        color: black;
+        text-decoration: none;
+    }
+    &__link:visited{
+        color: black
+    }
+    &__gitIcon{
+        font-size: 20px;
+    }
+}

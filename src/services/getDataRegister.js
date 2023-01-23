@@ -3,18 +3,19 @@ import axios from "axios";
 
 const getDataRegister = (user) => {
     const result = {
-        ok: true,
-        mal: false
+        goodResult: true,
+        badResult: false
     }
     return axios.post('https://proyecto-react-api.vercel.app/users/register', user)
             .then((response) => {
                 if (response) {
-                    return result.ok
+                    return result.goodResult
                 }
             })
             .catch((error) => {
+                console.log(error);
                 if (error) {
-                    return result.mal
+                    return result.badResult
                 }
             })
             

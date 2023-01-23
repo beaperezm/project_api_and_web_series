@@ -4,10 +4,10 @@ import LoaderContext from '../context/LoaderContext';
 
 
 function Loader (){
-    const loader = useContext(LoaderContext);
+    const isLoaded = useContext(LoaderContext);
     return(
-        <div className={`loader ${loader ? "display" : null}`}></div>
-    )
-}
+        <div className={`loader ${isLoaded ? "display" : null}`}></div>
+    );
+};
 
 export default Loader;

@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import '../styles/Serie.scss'
 
 function Serie({ serie }) {
-
     return (
         <div className="series">
             <li className="series__cardSerie">
