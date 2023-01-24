@@ -14,7 +14,7 @@ function Option({ series, handleOptionInput, option }) {
             <div className={`option ${!isLoaded ? "display" : null}`}>
                 <label className="option__label" htmlFor="titulo">Titulo</label>
                 <select className="option__select" name="" id="titulo" value={option} onChange={(event) => handleOptionInput(event.target.value)}>
-                    <option value='All'>TODOS</option>
+                    <option value='All'>SELECCIONA</option>
                     {series.map((serie, index) => {
                         return <option value={serie.title} key={index}>{serie.title}</option>
                     })}

@@ -25,34 +25,35 @@ const FormRegister = ({ handleChangeRegister, handleClickValueRegister, setIsReg
       if (data === true) {
         setIsRegistered(true);
         setTimeout(() => {
-          navigate('/login');
+          navigate('/');
           confetti();
         }, "500")
       } else if (data === false) {
         setError(true)
       }
     });
-    handleClickValueRegister({ nickname: '', email: '', password: '', confirmPassword: '' });
+    handleClickValueRegister({ nickname: '', email: '', password: '', confirmPassword: '', age: '' });
   }
 
   return (
 
-    <form action="" className="register">
+    <form action="" className="register" method='post'>
       <p className='registerText'>REGISTRATE</p>
       <label className="register__label" htmlFor="nickname"></label>
       <input type="text" className="register__input" id='nickname' onChange={handleFormRegister} value={user.nickname} placeholder='Nickname' />
+      <label className="register__label" htmlFor="age"></label>
+      <input type="text" className="register__input" id='age' onChange={handleFormRegister} value={user.age} placeholder='Edad' required />
       <label className="register__label" htmlFor="email"></label>
-      <input type="text" className="register__input" id='email' onChange={handleFormRegister} value={user.email} placeholder='Email'/>
+      <input type="text" className="register__input" id='email' onChange={handleFormRegister} value={user.email} placeholder='Email' />
       <label className="register__label" htmlFor="password"></label>
       <input type="password" className="register__input" id="password" onChange={handleFormRegister} value={user.password} placeholder='Contraseña' />
       <label className="register__label" htmlFor="confirmPassword"></label>
-      <input type="password" className="register__input" id="confirmPassword" onChange={handleFormRegister} value={user.confirmPassword} placeholder='Confirmar Contraseña'/>
+      <input type="password" className="register__input" id="confirmPassword" onChange={handleFormRegister} value={user.confirmPassword} placeholder='Confirmar Contraseña' />
       {error ? <p className='register__error'>{'Usuario o contraseña incorrecto'}</p> : null}
-      <button className='register__button' onClick={handleClick}>Registrar</button>
-      <p className='register__areRegister'> ¿Ya estás Registrado?   
-        <button className="register__button_login" onClick={handleClickLogin}>Loguéate</button>
+      <button type='submit' className='register__button' onClick={handleClick}>Registrar</button>
+      <p className='register__areRegister'> ¿YA ESTÁS REGISTRADO?
+        <button type='button' className="register__button_login" onClick={handleClickLogin}>LOGUÉATE</button>
       </p>
-
     </form>
   )
 }

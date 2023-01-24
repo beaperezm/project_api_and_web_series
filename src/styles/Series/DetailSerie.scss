@@ -1,13 +1,31 @@
+@import "../core/colors";
+@import '../core/fonts';
+
 .serie {
-  background-color: #f5ebe0;
-  border-radius: 20px;
+  background-color: $color-primary;
+   height: 82vh;
+   position: relative;
+   bottom: 50px;
+  
+  // border-radius: 20px;
   &__title {
-    font-size: 60px;
-    color: #8a5a44;
+    font-family: "font2";
+    font-size: 50px;
+    color: $color-secondary;
+    text-shadow: 4px 3px 1px rgb(180, 180, 180);
+    position: relative;
+    top: 100px;
+    right: 100px;
+
   }
   &__image {
-    width: 30%;
+    width: 15%;
     border-radius: 20px;
+    margin-left: 10%;
+    z-index: 1;
+    box-shadow: 5px 5px 8px #000000c1;
+    object-fit: cover;
+    position: absolute;
   }
   
   &__button {
@@ -15,15 +33,39 @@
   }
 }
 
+.imageGrid {
+  display: flex;
+  position: relative;
+  top: 10%;
+  left: 10%;
+  
+}
+
+.allGrid {
+  background-color: $color-azul-5;
+  box-shadow: 20px 20px 28px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  position: relative;
+  top: 60px;
+  left: 130px;
+}
 .grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(5, 40px);
     margin: auto;
     width: 40%;
+    color: $color-secondary;
+    position: relative;
+    left: 35px;
     &__sinopsys{
       grid-column: span 2;
       font-size: 20px;
+      position: relative;
+      left: 10px;
+      text-align: left;
     }
     &__director_list, &__genre_list{
       list-style: none;
@@ -33,4 +75,12 @@
       gap: 10px;
     }
 }
+
+.buttonHome {
+  position: relative;
+  top: 160px;
+}
+
+
+
 

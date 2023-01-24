@@ -60,7 +60,8 @@
     outline: none;
   }
   &__input::placeholder{
-    color: $color-tertiary
+    color: $color-tertiary;
+    font-size: 15px;
   }
   &__label {
     display: block;

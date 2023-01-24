@@ -1,10 +1,11 @@
 import React from "react";
 import '../../styles/Profile/isLogged.scss';
 
-function IsLogged ({ setIsLogged, userLoggedEmail, userLoggedNickname, handleClickValueLoggedEmail, handleClickValueLoggedNickname}){
+function IsLogged ({ setIsLogged, userLoggedEmail, userLoggedNickname, handleClickValueLoggedEmail, handleClickValueLoggedNickname, handleClickValueLoggedAge}){
     const handleLogout = () => {
         handleClickValueLoggedEmail();
         handleClickValueLoggedNickname();
+        handleClickValueLoggedAge();
         setIsLogged(false)
     }
     return (

@@ -6,13 +6,18 @@ function ModalForm({ title, body }) {
   const handleClose = () => setShow(false);
   return (
     <>
-      {show ? <div className="modal">
-        <h2>{title}</h2>
-        <div className="content">{body}</div>
-        <div className="actions">
-          <button className="toggle-button" onClick={handleClose}>Cerrar</button>
+      {show ?
+        <div className="modalBackground">
+          <div className='modalContainer'>
+            <h2 className='titleModal'>{title}</h2>
+            <div className="bodyModal">{body}</div>
+            <div className="footerModal">
+              <button  onClick={handleClose}>Cerrar</button>
+            </div>
+          </div>
         </div>
-      </div> : null}
+
+        : null}
     </>
   );
 }

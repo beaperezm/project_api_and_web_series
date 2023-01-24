@@ -4,6 +4,7 @@ const getDataLogin = (user) => {
     const userDB = {
         nickname: '',
         email: '',
+        age: '',
         goodResult: false,
         badResult: false
         }
@@ -13,6 +14,7 @@ const getDataLogin = (user) => {
                 userDB.goodResult = true;
                 userDB.email = response.data.email;
                 userDB.nickname = response.data.nickname;
+                userDB.age = response.data.age;
                 return userDB;
             }
         })

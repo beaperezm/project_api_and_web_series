@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import confetti from 'canvas-confetti';
 
-const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, setUserLoggedNickname, handleResetValueLogin, userLoggedEmail, userLoggedNickname, }) => {
+const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, setUserLoggedNickname, handleResetValueLogin, userLoggedEmail, userLoggedNickname, setUserLoggedAge, userLoggedAge}) => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const handleClickRegister = () => {
@@ -20,6 +20,7 @@ const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, s
         setIsLogged(true);
         setUserLoggedEmail(userLoggedEmail.email = data.email);
         setUserLoggedNickname(userLoggedNickname.nickname = data.nickname);
+        setUserLoggedAge(userLoggedAge.age = data.age)
         setTimeout(() => {
           navigate('/')
           confetti();
@@ -44,10 +45,9 @@ const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, s
       <input type="password" className="login__input" id="password" onChange={handleFormLogin} value={user.password} />
       {error ? <p className='login__error'>{'Usuario o contraseña incorrecto'}</p> : null}
       <button className="login__button" onClick={handleClick}>Login</button>
-      <p className='login__areLogin'>¿No tienes cuenta?
-      <button className="login__button_login" onClick={handleClickRegister}>Regístrate</button>
+      <p className='login__areLogin'>¿NO TIENES CUENTA?
+      <button type='button' className="login__button_login" onClick={handleClickRegister}>REGÍSTRATE</button>
       </p>
-      
     </form>
   )
 }

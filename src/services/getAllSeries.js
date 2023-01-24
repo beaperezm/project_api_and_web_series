@@ -12,7 +12,8 @@ const getAllSeries = () => {
                     seasons: serie.seasons,
                     synopsis: serie.synopsis,
                     year: serie.year,
-                    picture: serie.picture
+                    picture: serie.picture,
+                    isForAdults: serie.isForAdults
                 }
             });
             return data;
