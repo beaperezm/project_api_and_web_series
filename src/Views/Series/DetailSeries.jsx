@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 import '../../styles/Series/DetailSerie.scss';
 import ButtonHome from '../../components/ButtonHome/ButtonHome.jsx';
-import ModalForm from "../Modal/ModalForm";
+import ModalForm from "../Modal/ModalForm.jsx";
 
 function DetailSeries({ series, handleOptionInput, userLoggedAge }) {
     const params = useParams();
@@ -14,7 +14,6 @@ function DetailSeries({ series, handleOptionInput, userLoggedAge }) {
             {userLoggedAge < 18 && selectedSerie.isForAdults === true ?
                 <>
                     <ModalForm title={'PROHIBIDO'} body={'No tienes edad suficiente para acceder'} />
-                    <ButtonHome handleOption={handleOptionInput} />
                 </>
                 :
                 <div className="serie">
@@ -51,7 +50,6 @@ function DetailSeries({ series, handleOptionInput, userLoggedAge }) {
                         <ButtonHome handleOption={handleOptionInput} />
                     </div>
                 </div>
-
             }
         </>
     )

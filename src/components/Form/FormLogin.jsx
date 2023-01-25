@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import confetti from 'canvas-confetti';
 
-const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, setUserLoggedNickname, handleResetValueLogin, userLoggedEmail, userLoggedNickname, setUserLoggedAge, userLoggedAge, setIsRegistered}) => {
+const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, setUserLoggedNickname, handleResetValueLogin, userLoggedEmail, userLoggedNickname, setUserLoggedAge, userLoggedAge, setIsRegistered, setIsLoggedModal}) => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const handleClickRegister = () => {
@@ -19,6 +19,8 @@ const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, s
     getDataLogin(user).then((data) => {
       if (data.goodResult === true) {
         setIsLogged(true);
+        setIsLoggedModal(true);
+        setIsRegistered(false);
         setUserLoggedEmail(userLoggedEmail.email = data.email);
         setUserLoggedNickname(userLoggedNickname.nickname = data.nickname);
         setUserLoggedAge(userLoggedAge.age = data.age)

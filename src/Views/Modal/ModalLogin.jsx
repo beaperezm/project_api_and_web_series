@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import '../../styles/Modal/ModalForm.scss';
 import {useNavigate} from 'react-router-dom'
 
-function ModalForm({title, body}) {
+function ModalLogin({title, body, setIsLoggedModal}) {
   const navigate = useNavigate();
   const [show, setShow] = useState(true);
   const handleClose = () => {
+    setIsLoggedModal(false);
     setShow(false);
     navigate('/');
   }
@@ -26,4 +27,4 @@ function ModalForm({title, body}) {
   );
 }
 
-export default ModalForm;
+export default ModalLogin;

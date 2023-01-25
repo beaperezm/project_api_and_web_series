@@ -17,6 +17,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 import ModalForm from '../Views/Modal/ModalForm.jsx';
 import Footer from './Footer/Footer.jsx';
 import '../styles/App.css';
+import ModalLogin from '../Views/Modal/ModalLogin.jsx';
 
 
 
@@ -45,6 +46,7 @@ function App() {
     age: ''
   });
   const [isLogged, setIsLogged] = useState(false);
+  const [isLoggedModal, setIsLoggedModal] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
   useEffect(() => {
@@ -124,7 +126,7 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-            {isLogged ? <ModalForm title={'Login'} body={'¡TE HAS LOGUEADO CON ÉXITO!'} setIsLogged={setIsLogged} userLoggedEmail={userLoggedEmail} userLoggedNickname={userLoggedNickname}/> : null}
+            {isLoggedModal ? <ModalLogin title={'Login'} body={'¡TE HAS LOGUEADO CON ÉXITO!'} setIsLoggedModal={setIsLoggedModal} /> : null}
             {isRegistered ? <ModalForm title={'Registro'} body={'¡TE HAS REGISTRADO CON ÉXITO!'} /> : null}
             <LoaderContext.Provider value={isLoaded}>
               {!isLogged ? <Navigation isLoaded={isLoaded} /> : <IsLogged setIsLogged={setIsLogged} userLoggedNickname={userLoggedNickname} userLoggedEmail={userLoggedEmail} handleClickValueLoggedEmail={handleClickValueLoggedEmail} handleClickValueLoggedNickname={handleClickValueLoggedNickname} handleClickValueLoggedAge={handleClickValueLoggedAge}/>}
@@ -136,9 +138,9 @@ function App() {
           </>
         } />
         <Route path='/register' element={<Register handleOptionInput={handleOptionInput} handleChangeRegister={handleChangeRegister} user={user} handleClickValueRegister={handleClickValueRegister} setIsRegistered={setIsRegistered} />} />
-        <Route path='/login' element={<Login handleOptionInput={handleOptionInput} handleChangeLogin={handleChangeLogin} user={user} handleResetValueLogin={handleResetValueLogin} setIsLogged={setIsLogged} userLoggedEmail={userLoggedEmail} setUserLoggedNickname={setUserLoggedNickname} setUserLoggedEmail={setUserLoggedEmail} userLoggedNickname={userLoggedNickname} userLoggedAge={userLoggedAge} setUserLoggedAge={setUserLoggedAge} setIsRegistered={setIsRegistered}/>} />
+        <Route path='/login' element={<Login handleOptionInput={handleOptionInput} handleChangeLogin={handleChangeLogin} user={user} handleResetValueLogin={handleResetValueLogin} setIsLogged={setIsLogged} userLoggedEmail={userLoggedEmail} setUserLoggedNickname={setUserLoggedNickname} setUserLoggedEmail={setUserLoggedEmail} userLoggedNickname={userLoggedNickname} userLoggedAge={userLoggedAge} setUserLoggedAge={setUserLoggedAge} setIsRegistered={setIsRegistered} setIsLoggedModal={setIsLoggedModal}/>} />
         <Route path='/selected/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={selectedSerie} handleOptionInput={handleOptionInput} userLoggedAge={userLoggedAge}/>} />} />
-        <Route path='/detail/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={series} handleOptionInput={handleOptionInput} userLoggedAge={userLoggedAge} />} />} />
+        <Route path='/detail/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={series} handleOptionInput={handleOptionInput} userLoggedAge={userLoggedAge}  />} />} />
         <Route path='*' element={<UrlNotFound />} />
       </Routes>
       {isLoaded ? <Footer /> : null }

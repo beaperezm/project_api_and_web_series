@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# WEB REACT CON COLECCIÓN DE SERIES TV
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Image Movies](https://c7.alamy.com/compes/h7gegn/coleccion-de-16…drados-negros-con-esquinas-redondeadas-h7gegn.jpg)
 
-## Available Scripts
+Bienvenido a esta Web con una coleccion de Series de Television. 
+La web está añbergada en Netlify como Host de Deploy.
+Esta web realiza las peticiones contra una API realizada con NodeJS.
+Dicha API tiene recursos albergados en un Servidor Cloud en MongoAtlas utilizando MongoDB como BBDD. La API está desplegada utilizando Vercel como Host.
 
-In the project directory, you can run:
 
-### `npm start`
+## HECHO CON
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p align="center"> 
+      <a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> 
+    <a href="https://www.mongodb.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> 
+    <a href="https://nodejs.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> 
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## INSTALACION
+1. DESCARGA DEL REPOSITORIO
+```
+git clone https://github.com/torresmald/proyect-react-web.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. INSTALACION DE DEPENDENCIAS UTLIZADAS. 
 
-### `npm run build`
+  ```
+  npm install
+  ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### DEPENDENCIAS UTILIZADAS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- AXIOS--> Para la encriptación/desencriptacion de las password de Users.
+- CANVAS-CONFETTI--> Host de imágenes utilizado para subir las imagenes de cines/películas desde el servidor.
+- REACT--> Necesario para poder guardar en la BBDD las sesiones de los usuarios.
+- REACT-DOM--> Evitamos problemas de origen cruzado al utilizar Postman para lanzar las peticiones.
+- REACT-ICONS--> Dependencia que nos permite utilizar las variables de entorno y securizar la aplicación.
+- REACT-ROUTER-DOM--> Framework utilizado como entorno de desarrollo.
+- SASS--> Permite la gestión de sesiones de usuario.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ENDPOINTS DISPONIBLES:
+#### **LOS ENDPOINT TIPO GET ESTARÁN DISPONIBLES PARA USUARIOS DE TIPO USER Y ADMIN**.
+#### **LOS ENDPOINT TIPO POST, PUT Y DELETE SÓLO ESTARÁN DISPONIBLES PARA USUARIOS DE TIPO ADMIN**.
+##### ALGUNOS ENDPOINTS GET TIENEN CAMPOS FILTRADOS QUE NO SE MOSTRARÁN EN LA PETICIÓN
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+###### <sub>IMAGENES EN FORMATO ÚNICAMENTE PNG, JPG, JPEG, GIF</sub>
+###### <sub>Las cookies tienen un tiempo de expiracion de 2 horas.</sub>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## RECURSOS
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- https://www.mongodb.com/atlas/database
+- https://vercel.com/
+- https://cloudinary.com/
+- https://www.netlify.com/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## CONTACTO
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Project Repo: https://github.com/torresmald/proyect-react-web
+- Email: jonathan.torresmald@gmail.com
+- Email: BEATRIZ
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+DIVIERTETE USANDOLA......!!
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Image Movies](https://res.cloudinary.com/dpyvlsksj/image/upload/v1670418107/u06tjvt3rdseazby8apn.gif)
