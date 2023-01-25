@@ -97,3 +97,14 @@
   z-index: -1;
   width: 100%;
 }
+
+
+@media screen and (max-width: 762px){
+  .login{
+    width: 60%;
+    &__button{
+      margin-left: 10px;
+    }
+  }
+  
+}

@@ -4,14 +4,19 @@ import '../../styles/Series/DetailSerie.scss';
 import ButtonHome from '../../components/ButtonHome/ButtonHome.jsx';
 import ModalForm from "../Modal/ModalForm";
 
-function DetailSeries({ series, handleOption, userLoggedAge }) {
+function DetailSeries({ series, handleOptionInput, userLoggedAge }) {
     const params = useParams();
     const selectedSerie = series.find((serie) => {
         return serie.id === parseInt(params.id);
     });
     return (
         <>
-            {userLoggedAge >= 18 ?
+            {userLoggedAge < 18 && selectedSerie.isForAdults === true ?
+                <>
+                    <ModalForm title={'PROHIBIDO'} body={'No tienes edad suficiente para acceder'} />
+                    <ButtonHome handleOption={handleOptionInput} />
+                </>
+                :
                 <div className="serie">
                     <h2 className="serie__title">{selectedSerie.title}</h2>
                     <div className="imageGrid">
@@ -43,16 +48,14 @@ function DetailSeries({ series, handleOption, userLoggedAge }) {
                         </div>
                     </div>
                     <div className="buttonHome">
-                        <ButtonHome handleOption={handleOption} />
+                        <ButtonHome handleOption={handleOptionInput} />
                     </div>
-                </div> :
-                <>
-                    <ModalForm title={'PROHIBIDO'} body={'No tienes edad suficiente para acceder'} />
-                    <ButtonHome handleOption={handleOption} />
-                </>
+                </div>
+
             }
         </>
     )
 }
 
 export default DetailSeries;
+

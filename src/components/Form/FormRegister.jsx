@@ -11,7 +11,7 @@ import confetti from 'canvas-confetti';
 
 const FormRegister = ({ handleChangeRegister, handleClickValueRegister, setIsRegistered, user }) => {
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const handleClickLogin = () => {
     navigate('/login')
@@ -22,21 +22,24 @@ const FormRegister = ({ handleChangeRegister, handleClickValueRegister, setIsReg
   const handleClick = (event) => {
     event.preventDefault();
     getDataRegister(user).then((data) => {
-      if (data === true) {
+      if (data === true ) {
         setIsRegistered(true);
         setTimeout(() => {
           navigate('/');
           confetti();
         }, "500")
-      } else if (data === false) {
-        setError(true)
+      } else if (data === 'Email incorrecto') {
+        setError('Email con formato no valido')
+      } else if (data === 'Edad requerida'){
+        setError('La edad es requerida')
+      } else if (data === 'Email y edad incorrecto'){
+        setError('Email y edad incorrectos')
       }
     });
-    handleClickValueRegister({ nickname: '', email: '', password: '', confirmPassword: '', age: '' });
+    handleClickValueRegister({ nickname: '', email: '', password: '', age: '' });
   }
 
   return (
-
     <form action="" className="register" method='post'>
       <p className='registerText'>REGISTRATE</p>
       <label className="register__label" htmlFor="nickname"></label>
@@ -47,9 +50,7 @@ const FormRegister = ({ handleChangeRegister, handleClickValueRegister, setIsReg
       <input type="text" className="register__input" id='email' onChange={handleFormRegister} value={user.email} placeholder='Email' />
       <label className="register__label" htmlFor="password"></label>
       <input type="password" className="register__input" id="password" onChange={handleFormRegister} value={user.password} placeholder='Contraseña' />
-      <label className="register__label" htmlFor="confirmPassword"></label>
-      <input type="password" className="register__input" id="confirmPassword" onChange={handleFormRegister} value={user.confirmPassword} placeholder='Confirmar Contraseña' />
-      {error ? <p className='register__error'>{'Usuario o contraseña incorrecto'}</p> : null}
+      {error ? <p className='register__error'>{error}</p> : null}
       <button type='submit' className='register__button' onClick={handleClick}>Registrar</button>
       <p className='register__areRegister'> ¿YA ESTÁS REGISTRADO?
         <button type='button' className="register__button_login" onClick={handleClickLogin}>LOGUÉATE</button>

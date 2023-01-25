@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import '../../styles/Modal/ModalForm.scss';
+import {useNavigate} from 'react-router-dom'
 
 function ModalForm({ title, body }) {
+  const navigate = useNavigate();
   const [show, setShow] = useState(true);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    navigate('/');
+  }
   return (
     <>
       {show ?
@@ -16,7 +21,6 @@ function ModalForm({ title, body }) {
             </div>
           </div>
         </div>
-
         : null}
     </>
   );

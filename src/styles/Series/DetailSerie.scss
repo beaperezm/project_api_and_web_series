@@ -3,11 +3,10 @@
 
 .serie {
   background-color: $color-primary;
-   height: 82vh;
+  width: auto;
+   height: 105vh;
    position: relative;
    bottom: 50px;
-  
-  // border-radius: 20px;
   &__title {
     font-family: "font2";
     font-size: 50px;
@@ -15,19 +14,19 @@
     text-shadow: 4px 3px 1px rgb(180, 180, 180);
     position: relative;
     top: 100px;
-    right: 100px;
-
+    text-align: center;
   }
   &__image {
-    width: 15%;
+    display: flex;
+    //justify-content: center;
+    width: 22%;
     border-radius: 20px;
-    margin-left: 10%;
     z-index: 1;
     box-shadow: 5px 5px 8px #000000c1;
     object-fit: cover;
     position: absolute;
+    left: 15%;
   }
-  
   &__button {
     padding-bottom: 20px;
   }
@@ -35,20 +34,26 @@
 
 .imageGrid {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
   position: relative;
+  margin: 0 auto;
+  width: 100%;
   top: 10%;
-  left: 10%;
-  
 }
 
 .allGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   background-color: $color-azul-5;
   box-shadow: 20px 20px 28px #000000;
   border-radius: 20px;
   width: 60%;
   height: auto;
   position: relative;
-  top: 60px;
+  top: 150px;
   left: 130px;
 }
 .grid{
@@ -56,15 +61,13 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(5, 40px);
     margin: auto;
-    width: 40%;
+    width: 50%;
     color: $color-secondary;
     position: relative;
-    left: 35px;
     &__sinopsys{
       grid-column: span 2;
       font-size: 20px;
       position: relative;
-      left: 10px;
       text-align: left;
     }
     &__director_list, &__genre_list{
@@ -77,10 +80,67 @@
 }
 
 .buttonHome {
+  display: flex;
+  justify-content: center;
   position: relative;
-  top: 160px;
+  top: 350px;
+  //left: ;
 }
 
+@media screen and (max-width: 1150px) {
+  .serie {
+    &__image {
+      width: 25%;
+      left: 40%;
+    }
+  }
+  .imageGrid {
+    display: inline-block;
+  }
+  .allGrid {
+    display: inline-block;
+    width: 100%;
+    margin-top: 22%;
+    top:73px;
+    left: 0px;
+    }
+  }
+  .grid{
+      margin: auto;
+      width: 80%;
+      z-index: 1;
+      margin-top: 10%;
+      &__sinopsys{
+        grid-column: span 2;
+        font-size: 20px;
+        position: relative;
+      }
+  }
+  .buttonHome {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 180px;
+  }
 
 
-
+@media screen and (max-width: 762px) {
+  .serie {
+     height: auto;
+     border-radius: 20px;
+    &__image {
+      width: 35%;
+      left: 30%;
+    }
+    &__title {
+      top: 30px;
+      text-align: center;
+    }
+  }
+  .allGrid {
+    margin-top: 32%;
+  }
+  .buttonHome {
+    top: 100px;
+  }
+}

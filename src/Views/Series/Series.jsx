@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import '../../styles/Series/Serie.scss'
 
-function Serie({ serie }) {
-    
+function Serie({ serie}) {
+
     return (
         <article className="series">
             <li className="series__cardSerie">

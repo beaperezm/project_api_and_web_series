@@ -33,7 +33,6 @@ function App() {
     nickname: '',
     email: '',
     password: '',
-    confirmPassword: '',
     age: ''
   });
   const [userLoggedNickname, setUserLoggedNickname] = useState({
@@ -101,7 +100,7 @@ function App() {
   };
   // Resetea los input del Register
   const handleClickValueRegister = () => {
-    setUser({ nickname: '', email: '', password: '', confirmPassword: '', age: ''})
+    setUser({ nickname: '', email: '', password: '', age: ''})
   };
   //Resetea los valores del profile email
   const handleClickValueLoggedEmail = () => {
@@ -115,7 +114,6 @@ function App() {
   const handleClickValueLoggedAge = () => {
     setUserLoggedAge({age: ''})
   }
-
   const filteredSerie = series.filter((serie) => {
     return serie.title.toLowerCase().includes(search);
   });
@@ -133,15 +131,15 @@ function App() {
               {!isLogged ? <Navigation isLoaded={isLoaded} /> : <IsLogged setIsLogged={setIsLogged} userLoggedNickname={userLoggedNickname} userLoggedEmail={userLoggedEmail} handleClickValueLoggedEmail={handleClickValueLoggedEmail} handleClickValueLoggedNickname={handleClickValueLoggedNickname} handleClickValueLoggedAge={handleClickValueLoggedAge}/>}
               <Filter handleSearchInput={handleSearchInput} />
               <Option series={selectedSerie} handleOptionInput={handleOptionInput} option={option} />
-              <ListSeries series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton} />
+              <ListSeries series={filteredSerie} nextPage={nextPage} previousPage={previousPage} showNextButton={showNextButton} showPreviousButton={showPreviousButton} userLoggedAge={userLoggedAge}/>
               <Loader />
             </LoaderContext.Provider>
           </>
         } />
         <Route path='/register' element={<Register handleOptionInput={handleOptionInput} handleChangeRegister={handleChangeRegister} user={user} handleClickValueRegister={handleClickValueRegister} setIsRegistered={setIsRegistered} />} />
-        <Route path='/login' element={<Login handleOptionInput={handleOptionInput} handleChangeLogin={handleChangeLogin} user={user} handleResetValueLogin={handleResetValueLogin} setIsLogged={setIsLogged} userLoggedEmail={userLoggedEmail} setUserLoggedNickname={setUserLoggedNickname} setUserLoggedEmail={setUserLoggedEmail} userLoggedNickname={userLoggedNickname} userLoggedAge={userLoggedAge} setUserLoggedAge={setUserLoggedAge}/>} />
+        <Route path='/login' element={<Login handleOptionInput={handleOptionInput} handleChangeLogin={handleChangeLogin} user={user} handleResetValueLogin={handleResetValueLogin} setIsLogged={setIsLogged} userLoggedEmail={userLoggedEmail} setUserLoggedNickname={setUserLoggedNickname} setUserLoggedEmail={setUserLoggedEmail} userLoggedNickname={userLoggedNickname} userLoggedAge={userLoggedAge} setUserLoggedAge={setUserLoggedAge} setIsRegistered={setIsRegistered}/>} />
         <Route path='/selected/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={selectedSerie} />} />} />
-        <Route path='/detail/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={series} handleOptionInput={handleOptionInput} userLoggedAge={userLoggedAge}/>} />} />
+        <Route path='/detail/:id' element={<PrivateRoute isLogged={isLogged} component={<DetailSeries series={series} handleOptionInput={handleOptionInput} userLoggedAge={userLoggedAge} />} />} />
         <Route path='*' element={<UrlNotFound />} />
       </Routes>
       {isLoaded ? <Footer /> : null }

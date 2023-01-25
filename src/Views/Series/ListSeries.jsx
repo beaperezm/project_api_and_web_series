@@ -3,7 +3,7 @@ import Serie from "./Series";
 import '../../styles/Series/ListSerie.scss';
 import LoaderContext from "../../context/LoaderContext";
 
-function ListSeries({ series, nextPage, previousPage, showPreviousButton, showNextButton}) {
+function ListSeries({ series, nextPage, previousPage, showPreviousButton, showNextButton, userLoggedAge}) {
     const nextPageClick = () => {
         nextPage()
     }
@@ -11,7 +11,7 @@ function ListSeries({ series, nextPage, previousPage, showPreviousButton, showNe
         previousPage()
     }
     const listSeries = series.map((serie, index) => {
-        return <Serie serie={serie} key={index} />
+        return <Serie serie={serie} key={index}/>
     })
     const isLoaded = useContext(LoaderContext);
 
