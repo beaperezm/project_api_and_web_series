@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import Button from '../components/Button/Button';
-import LoaderContext from '../context/LoaderContext';
-import '../styles/Navigation.scss';
+import Button from '../../components/Button/Button';
+import LoaderContext from '../../context/LoaderContext';
+import '../../styles/Navigation/Navigation.scss';
 
 function Navigation({isLogged}) {
     const isLoaded = useContext(LoaderContext)

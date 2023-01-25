@@ -39,7 +39,6 @@ const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, s
     handleChangeLogin({ ...user, [event.target.id]: event.target.value })
   }
 
-
   return (
     <form action="" className="login">
       <p className='loginText'>LOGUEATE</p>

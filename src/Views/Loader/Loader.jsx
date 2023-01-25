@@ -1,6 +1,6 @@
-import '../styles/Loader/Loader.scss';
+import '../../styles/Loader/Loader.scss';
 import {useContext} from 'react';
-import LoaderContext from '../context/LoaderContext';
+import LoaderContext from '../../context/LoaderContext';
 
 
 function Loader (){
