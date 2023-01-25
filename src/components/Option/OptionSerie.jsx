@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/Filters/Option.scss';
 import LoaderContext from "../../context/LoaderContext";
 
-function Option({ series, handleOptionInput, option }) {
+function Option({ series, handleOptionInput, option, userLoggedAge}) {
     const serieId = series.map((serie) => {
         return serie.id;
     })
