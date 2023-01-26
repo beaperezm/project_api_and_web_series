@@ -3,7 +3,7 @@
 ![Image Movies](https://c7.alamy.com/compes/h7gegn/coleccion-de-16…drados-negros-con-esquinas-redondeadas-h7gegn.jpg)
 
 Bienvenido a esta Web con una coleccion de Series de Television.
-La web está añbergada en Netlify como Host de Deploy.
+La web está albergada en Netlify como Host de Deploy.
 Esta web realiza las peticiones contra una API realizada con NodeJS.
 Dicha API tiene recursos albergados en un Servidor Cloud en MongoAtlas utilizando MongoDB como BBDD. La API está desplegada utilizando Vercel como Host.
 
@@ -21,7 +21,7 @@ Dicha API tiene recursos albergados en un Servidor Cloud en MongoAtlas utilizand
 
 1. DESCARGA DEL REPOSITORIO
 ```
-git clone https://github.com/torresmald/proyect-react-web.git
+git clone https://github.com/beaperezm/project_api_and_web_series/project-react-web.git
 ```
 2. INSTALACION DE DEPENDENCIAS UTLIZADAS.
 ```
@@ -60,9 +60,9 @@ Abrir el navegador en: http://localhost:3000
 
 ## CONTACTO
 
-- Project Repo: https://github.com/torresmald/proyect-react-web
+- Project Repo: https://github.com/beaperezm/project_api_and_web_series/project-react-web
 - Email: jonathan.torresmald@gmail.com
-- Email: BEATRIZ
+- Email: bpml2001@hotmail.com
 
 DIVIERTETE USANDOLA......!!
 
