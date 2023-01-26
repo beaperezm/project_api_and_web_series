@@ -21,7 +21,7 @@ Dicha API tiene recursos albergados en un Servidor Cloud en MongoAtlas utilizand
 
 1. DESCARGA DEL REPOSITORIO
 ```
-git clone https://github.com/beaperezm/project_api_and_web_series/project-react-web.git
+git clone https://github.com/beaperezm/project-react-web.git
 ```
 2. INSTALACION DE DEPENDENCIAS UTLIZADAS.
 ```
@@ -60,7 +60,7 @@ Abrir el navegador en: http://localhost:3000
 
 ## CONTACTO
 
-- Project Repo: https://github.com/beaperezm/project_api_and_web_series/project-react-web
+- Project Repo: https://github.com/beaperezm/project-react-web
 - Email: jonathan.torresmald@gmail.com
 - Email: bpml2001@hotmail.com
 
