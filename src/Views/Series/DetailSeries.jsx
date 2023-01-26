@@ -10,6 +10,7 @@ function DetailSeries({ series, handleOptionInput, userLoggedAge }) {
         return serie.id === parseInt(params.id);
     });
     return (
+        // Si el usuario es menor de edad y la serie elegida es para mayores de edad, se mostrará el Modal. En caso contrario se mostrará el detalle de la Serie. 
         <>
             {userLoggedAge < 18 && selectedSerie.isForAdults === true ?
                 <>
@@ -35,11 +36,11 @@ function DetailSeries({ series, handleOptionInput, userLoggedAge }) {
                                     })}
                                 </ul>
                                 <p className="grid__platform"> PLATAFORMA:</p>
-                                <p>{selectedSerie.platform}</p>
+                                <p className="grid__platform_platform">{selectedSerie.platform}</p>
                                 <p className="grid__seasons"> TEMPORADAS: </p>
-                                <p>{selectedSerie.seasons}</p>
+                                <p className="grid__seasons_seasons">{selectedSerie.seasons}</p>
                                 <p className="grid__year"> AÑO EMISION: </p>
-                                <p>{selectedSerie.year}</p>
+                                <p className="grid__year_year">{selectedSerie.year}</p>
                                 <div className="grid__sinopsys">
                                     <p>{selectedSerie.synopsis}</p>
                                 </div>

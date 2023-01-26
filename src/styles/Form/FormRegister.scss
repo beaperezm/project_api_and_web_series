@@ -16,48 +16,22 @@
   max-width: 480px;
   overflow: hidden;
   transform: translate(-50%, -50%);
-  padding: 2em;
+  padding: 2%;
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 1;
   width: 98%;
-}
-.register:before {
-  height: 100vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: -1;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-}
-.register:after {
-  background: rgba($color-primary, 0.8);
-  content: "";
-  display: block;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-}
-
-.register{
   &__input {
-    font-size: 16px;
     padding: 10px;
     width: 250px;
     border: 1px solid rgba($color-azul-4, 1);
-    box-shadow: 10px;
     border-top: none;
     border-left: none;
     border-right: none;
     background: rgba(20, 20, 20, 0.2);
     color: white;
     font-weight: bold;
-    outline: none;
   }
   &__input::placeholder{
     color: $color-tertiary;
@@ -104,23 +78,41 @@
   }
   }
 
+.register:before {
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+}
+.register:after {
+  background: rgba($color-primary, 0.8);
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+}
 
 
+@media screen and (max-width: 768px){
+  .register{
+    width: 60%;
+    &__button{
+      margin-left: 28%;
+    }
+  }
+}
 
-
-// .divRegister {
-//     .register {
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       padding-top: 200px;
-//       gap: 10px;
-//       &__label {
-//         font-size: 20px;
-//         color: #8a5a44;
-//       }
-//       &__input {
-//         width: 300px;
-//       }
-//     }
-// }
+@media screen and (max-width: 520px){
+  .register{
+    &__button{
+      margin-left: 20%;
+    }
+  }
+}

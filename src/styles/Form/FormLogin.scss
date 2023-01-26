@@ -15,31 +15,26 @@
   max-width: 480px;
   overflow: hidden;
   transform: translate(-50%, -50%);
-  padding: 2em;
+  padding: 2%;
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 1;
   width: 98%;
   &__input {
-    font-size: 16px;
     padding: 10px;
     width: 250px;
     border: 1px solid rgba($color-azul-4, 1);
-    box-shadow: 10px;
     border-top: none;
     border-left: none;
     border-right: none;
     background: rgba(20, 20, 20, 0.2);
     color: white;
-    font-weight: bold;
-    outline: none;
     margin-bottom: 21px;
   }
   &__label {
     display: block;
-    margin-bottom: 0.5em;
-    transition: all 0.25s;
+    margin-bottom: 8.5px;
     color: $color-tertiary;
   }
   &__button {
@@ -99,12 +94,19 @@
 }
 
 
-@media screen and (max-width: 762px){
+@media screen and (max-width: 768px){
   .login{
     width: 60%;
     &__button{
-      margin-left: 10px;
+      margin-left: 33%;
     }
   }
-  
+}
+
+@media screen and (max-width: 520px){
+  .login{
+    &__button{
+      margin-left: 25%;
+    }
+  }
 }

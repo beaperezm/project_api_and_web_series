@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '../../styles/Modal/ModalForm.scss';
 import {useNavigate} from 'react-router-dom'
 
+// Vista de Modal que se muestra cuando te has registrado ó no tienes permisos para acceder a una Serie.
+
 function ModalForm({title, body}) {
   const navigate = useNavigate();
   const [show, setShow] = useState(true);

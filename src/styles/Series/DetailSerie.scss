@@ -2,145 +2,65 @@
 @import '../core/fonts';
 
 .serie {
-  background-color: $color-primary;
-  width: auto;
-   height: 105vh;
-   position: relative;
-   bottom: 50px;
   &__title {
     font-family: "font2";
     font-size: 50px;
-    color: $color-secondary;
-    text-shadow: 4px 3px 1px rgb(180, 180, 180);
-    position: relative;
-    top: 100px;
-    text-align: center;
+    color: #155e8b;
+    text-shadow:  0  1px  0   #156c8b,
+                  0  2px  0   #13577c,
+                  0  3px  0   #11336e, 
+                  0  4px  0   #0e225f, 
+                  0  5px  0   #0c0e50,
+                  0  6px  0   #130a41,
+                  3px 8px 15px rgba(0,0,0,0.1),
+                  3px 8px  5px rgba(0,0,0,0.3);
   }
   &__image {
-    display: flex;
-    //justify-content: center;
-    width: 22%;
+    width: 26%;
     border-radius: 20px;
     z-index: 1;
     box-shadow: 5px 5px 8px #000000c1;
     object-fit: cover;
-    position: absolute;
-    left: 15%;
-  }
-  &__button {
-    padding-bottom: 20px;
-  }
-}
-
-.imageGrid {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  position: relative;
-  margin: 0 auto;
-  width: 100%;
-  top: 10%;
-}
-
-.allGrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: $color-azul-5;
-  box-shadow: 20px 20px 28px #000000;
-  border-radius: 20px;
-  width: 60%;
-  height: auto;
-  position: relative;
-  top: 150px;
-  left: 130px;
-}
-.grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, 40px);
-    margin: auto;
-    width: 50%;
-    color: $color-secondary;
     position: relative;
-    &__sinopsys{
-      grid-column: span 2;
-      font-size: 20px;
-      position: relative;
-      text-align: left;
-    }
-    &__director_list, &__genre_list{
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+  }
 }
 
-.buttonHome {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  top: 350px;
-  //left: ;
-}
-
-@media screen and (max-width: 1150px) {
-  .serie {
-    &__image {
-      width: 25%;
-      left: 40%;
-    }
-  }
-  .imageGrid {
-    display: inline-block;
-  }
-  .allGrid {
-    display: inline-block;
-    width: 100%;
-    margin-top: 22%;
-    top:73px;
-    left: 0px;
-    }
-  }
-  .grid{
+.grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(5, 40px);
       margin: auto;
-      width: 80%;
-      z-index: 1;
-      margin-top: 10%;
+      width: 74%;
+      color: $color-secondary;
+      background-color: $color-azul-5;
+      box-shadow: 20px 20px 28px #000000;
+      border-radius: 20px;
+      position: relative;
+      justify-content: center;
       &__sinopsys{
         grid-column: span 2;
         font-size: 20px;
         position: relative;
       }
-  }
-  .buttonHome {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: 250px;
+      &__director, &__genre, &__platform, &__seasons, &__year{
+        display: flex;
+        justify-content: flex-end;
+      
+      }
+      &__director_list, &__genre_list, &__platform_platform, &__year_year, &__seasons_seasons{
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: left;
+      }
   }
 
 
-@media screen and (max-width: 762px) {
+
+@media screen and (max-width: 1024px) {
   .serie {
-     height: auto;
-     border-radius: 20px;
     &__image {
       width: 35%;
-      left: 30%;
-    }
-    &__title {
-      top: 30px;
-      text-align: center;
     }
   }
-  .allGrid {
-    margin-top: 32%;
-  }
-  .buttonHome {
-    top: 100px;
-  }
-}
+} 

@@ -1,19 +1,28 @@
 import React from 'react'
-
-//---- CAMBIADO A FormLogin
-import '../../styles/Form/FormLogin.scss';
 import getDataLogin from "../../services/getDataLogin.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import confetti from 'canvas-confetti';
+import '../../styles/Form/FormLogin.scss';
+
 
 const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, setUserLoggedNickname, handleResetValueLogin, userLoggedEmail, userLoggedNickname, setUserLoggedAge, userLoggedAge, setIsRegistered, setIsLoggedModal}) => {
+  // error --> error de usuario o clave incorrectos al hacer el login.
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const handleClickRegister = () => {
     setIsRegistered(false)
     navigate('/register')
   }
+  /* 
+  Funcion que se encarga de traer los datos del usuario de la API.
+   Si se encuentra al usuario en la base de datos -->
+        - Cambiamos las variables de isLogged, isLoggedModal y isRegistered. 
+        - Seteamos las variables de Email, Nickname y Age con los valores que trae la API. 
+        - Lanzamos un confetti y nos devuelve al Home. 
+   Si no se encuentra el usuario lanzamos el error. 
+  */
+
   const handleClick = (event) => {
     event.preventDefault();
     getDataLogin(user).then((data) => {
@@ -35,6 +44,7 @@ const FormLogin = ({ handleChangeLogin, user, setIsLogged, setUserLoggedEmail, s
 
     handleResetValueLogin({ email: '', password: '' })
   }
+// Funcion que recoge el valor de los input email y password y los envía la función handleChangeLogin creada en APP.  
   const handleFormLogin = (event) => {
     handleChangeLogin({ ...user, [event.target.id]: event.target.value })
   }

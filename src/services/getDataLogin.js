@@ -1,5 +1,5 @@
 import axios from "axios";
-
+// Llamada a la API de login para el login del usuario. En funcion de si el usuario se ha logueado correctamente devuelve un valor u otro con las propiedades del objeto userDB. 
 const getDataLogin = (user) => {
     const userDB = {
         nickname: '',

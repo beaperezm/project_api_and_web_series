@@ -1,4 +1,5 @@
-
+// Llamada a la API para obtener las series páginadas. Por defecto en la API se muestran de 3 en 3.
+ 
 const getDataPaged = (page) => {
     return fetch(`https://proyecto-react-api.vercel.app/series/paged?page=${page}`)
         .then((res) => res.json())

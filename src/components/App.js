@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import getDataPaged from '../services/getDataPaged.js';
 import getAllSeries from '../services/getAllSeries.js';
+
 import DetailSeries from '../Views/Series/DetailSeries.jsx';
 import ListSeries from '../Views/Series/ListSeries.jsx';
 import Register from '../Views/Register/Register.jsx';
@@ -16,15 +18,16 @@ import Profile from '../Views/Login/Profile.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 import ModalForm from '../Views/Modal/ModalForm.jsx';
 import Footer from './Footer/Footer.jsx';
-import '../styles/App.css';
 import ModalLogin from '../Views/Modal/ModalLogin.jsx';
+
+import '../styles/App.css';
 
 
 
 function App() {
-  //Variable que va a contener el listado de series.
+  // Variable que va a contener el listado de series.
   const [allSeries, setAllSeries] = useState([]);
-  //Variable que va a contener las series paginadas.
+  // Variable que va a contener las series paginadas.
   const [series, setSeries] = useState([]);
   // Variable para el filtro de Busqueda de la web.
   const [search, setSearch] = useState('');
@@ -32,11 +35,11 @@ function App() {
   const [option, setOption] = useState('All');
   // Variable que guarda el numero de página actual.
   const [page, setPage] = useState(1);
-  // Variable para controlar si han llegado los datos de la API y ocultar el LOADER.
+  // Variable para controlar si han llegado los datos de la API y ocultar/mostrar el componente LOADER.
   const [isLoaded, setIsLoaded] = useState(false);
-  // Variable que controla el boton de NEXT para ir a la pagina siguiente.
+  // Variable que controla el boton de NEXT que lo oculta/muestra para ir a la pagina siguiente.
   const [showNextButton, setShowNextButton] = useState(true);
-  // Variable que controla el boton de PREVIOUS para ir a la pagina anterior.
+  // Variable que controla el boton de PREVIOUS que lo oculta/muestra para ir a la pagina anterior.
   const [showPreviousButton, setShowPreviousButton] = useState(false);
   // Variable para guardar los datos del usuario.
   const [user, setUser] = useState({
@@ -46,7 +49,7 @@ function App() {
     age: ''
   });
 
-  // Variables para guardar el valor del Nickname, Email y Age del usuario Logueado para usarlo en el PROFILE.
+  // Variables para guardar el valor del Nickname, Email y Age del usuario Logueado para usarlo en el componente PROFILE.
   const [userLoggedNickname, setUserLoggedNickname] = useState({
     nickname: ''
   });
@@ -57,11 +60,11 @@ function App() {
     age: ''
   });
 
-  //Variable para controlar si el usuario está Logueado y mostrar el PROFILE
+  //Variable para controlar si el usuario está Logueado y mostrar el componente PROFILE
   const [isLogged, setIsLogged] = useState(false);
-  // Variable para controlar si el usuario está Registrado y mostrar el MODAL en caso de éxito.
+  // Variable para controlar si el usuario está Registrado y mostrar el componente MODAL en caso de éxito.
   const [isRegistered, setIsRegistered] = useState(false);
-  // Variable para comprobar el MODAL del Login.
+  // Variable para comprobar el MODAL del Login y mostrar el componente MODAL en caso de éxito.
   const [isLoggedModal, setIsLoggedModal] = useState(false);
 
   /*
@@ -71,7 +74,7 @@ function App() {
     2- Llamar al endpoint de la paginacion y setear la variable series con la respuesta de las 3 series.
     En ambos casos, cuando haya respuesta se oculta el LOADER de la web porque ya tenemos los datos. 
   Tambien controlamos el número de pagina para mostrar/ocultar los botones de next/previous.
-  Por ultimo, seteamos la variable de estado con la opción elegida. 
+  Por ultimo, seteamos la variable de estado con la opción elegida del desplegable. 
   */
   useEffect(() => {
     getAllSeries().then((response) => {
@@ -103,27 +106,27 @@ function App() {
     setPage(page - 1)
     setShowNextButton(true);
   };
-  // Recogemos mediante lifting el value del Search Input y lo seteamos a la variable de estado search. 
+  // Recogemos mediante lifting el value del Search Input y lo seteamos a la variable de estado search. Usamos esta funcion en el componente FILTER.  
   const handleSearchInput = (value) => {
     setSearch(value);
   };
-  // Recogemos mediante lifting el value del Option Select y lo seteamos a la variable de estado option. 
+  // Recogemos mediante lifting el value del Option Select y lo seteamos a la variable de estado option. Usamos esta función en el componente OPTION.
   const handleOptionInput = (value) => {
     setOption(value)
   };
-  // Recogemos mediante lifting el value del Login y lo seteamos a la variable de estado User. 
+  // Recogemos mediante lifting el value del Login y lo seteamos a la variable de estado User. Usamos esta función en el componente LOGIN.
   const handleChangeLogin = (value) => {
     setUser(value);
   };
-  // Recogemos mediante lifting el value del Register y lo seteamos a la variable de estado User. 
+  // Recogemos mediante lifting el value del Register y lo seteamos a la variable de estado User. Usamos esta función en el componente REGISTER.
   const handleChangeRegister = (value) => {
     setUser(value);
   };
-  // Resetea los input del Login para controlarlos.
+  // Resetea los valores input del Login para controlarlos.
   const handleResetValueLogin = () => {
     setUser({ email: '', password: '' })
   };
-  // Resetea los input del Register para controlarlos
+  // Resetea los valores input del Register para controlarlos.
   const handleClickValueRegister = () => {
     setUser({ nickname: '', email: '', password: '', age: '' })
   };
@@ -143,12 +146,30 @@ function App() {
   const filteredSerie = series.filter((serie) => {
     return serie.title.toLowerCase().includes(search);
   });
-  // Codigo que filtra la serie en funcion de la eleccion del usuario mediante el Select. 
+  // Codigo que filtra la serie en funcion de la eleccion del usuario mediante el desplegable del Select. 
   const selectedSerie = allSeries.filter((serie) => {
     return option === 'All' ? true : serie.title === option;
   });
   return (
     <div className="App">
+    {/* 
+      Estructura de Routas de la web. Utilizamos las siguientes rutas:
+       1- '/' --> Home de la web en la que se comprueba:
+                - Si está el usuario logueado mostrará el Modal del Login.
+                - Si está el usuario registrado mostrará el Modal del Register.
+              Tenemos un useContext con el valor del loader que lo utilizan los componentes:
+                - Navigation
+                - Filter
+                - Option
+                - ListSeries
+                - Loader
+
+        2- '/register' --> Ruta del registro del usuario. 
+        3- '/login' --> Ruta del login del usuario. 
+        4- '/selected/:id' --> Ruta que muestra la página de detalle de la serie con la opción elegida. 
+        5- '/detail/:id' --> Ruta que muestra la página de detalle al hacer click en la imagen de una Serie.     
+        6- '*' --> Ruta que muestra el componente UrlNotFound que gestiona las Url no válidas.   
+    */}
       <Routes>
         <Route path='/' element={
           <>

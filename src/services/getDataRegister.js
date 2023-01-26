@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Llamada a la API de register para el registro del usuario. En funcion de si el usuario se ha registrado correctamente devuelve un valor u otro con las propiedades del objeto result. 
 
 const getDataRegister = (user) => {
     const result = {

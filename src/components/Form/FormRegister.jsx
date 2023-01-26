@@ -1,7 +1,4 @@
-// ----- CREADO TODO ESTE COMPONENTE de 0
-
 import React, { useState } from 'react'
-//CREADO EL FormRegister.scss de 0
 import '../../styles/Form/FormRegister.scss';
 import getDataRegister from '../../services/getDataRegister.js';
 import { useNavigate } from 'react-router-dom';
@@ -10,15 +7,19 @@ import confetti from 'canvas-confetti';
 
 
 const FormRegister = ({ handleChangeRegister, handleClickValueRegister, setIsRegistered, user }) => {
-
+// error --> error de usuario o clave incorrectos al hacer el registro.
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const handleClickLogin = () => {
     navigate('/login')
   }
-  const handleFormRegister = (event) => {
-    handleChangeRegister({ ...user, [event.target.id]: event.target.value })
-  }
+   /* 
+  Funcion que se encarga de registrar los datos del usuario a la API.
+   Si no da error en el registro -->
+        - Cambiamos la variable isRegistered. 
+        - Lanzamos un confetti y nos devuelve al Home. 
+   Si los datos introducidos por el usuario son incorrectos lanzamos diferentes mensajes. 
+  */
   const handleClick = (event) => {
     event.preventDefault();
     getDataRegister(user).then((data) => {
@@ -37,6 +38,10 @@ const FormRegister = ({ handleChangeRegister, handleClickValueRegister, setIsReg
       }
     });
     handleClickValueRegister({ nickname: '', email: '', password: '', age: '' });
+  }
+  // Funcion que recoge el valor de los input y los envía la función handleChangeRegister creada en APP.  
+  const handleFormRegister = (event) => {
+    handleChangeRegister({ ...user, [event.target.id]: event.target.value })
   }
 
   return (

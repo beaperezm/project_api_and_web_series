@@ -1,14 +1,9 @@
 import React from "react";
-// ---- CAMBIADO A FormRegister
 import FormRegister from '../../components/Form/FormRegister.jsx';
-
-
-//---AÑADIDO EL scss (he creado el fichero de cero)
 import '../../styles/Form/Register.scss';
-
 import ButtonHome from "../../components/ButtonHome/ButtonHome.jsx";
 
-
+// Vista que incluye el formulario y el boton de Home. 
 
 function Register({ handleOptionInput, handleChangeRegister, handleClickValueRegister, setIsRegistered, user}) {
     return (

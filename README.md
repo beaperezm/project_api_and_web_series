@@ -33,6 +33,8 @@ npm start
 Abrir el navegador en: http://localhost:3000
 ```
 
+
+
 ### DEPENDENCIAS UTILIZADAS
 
 - AXIOS--> Biblioteca de cliente HTTP que le permite realizar solicitudes a un endpoint determinado.
@@ -43,6 +45,11 @@ Abrir el navegador en: http://localhost:3000
 - REACT-ROUTER-DOM--> Librería de navegación
 - SASS--> Para la gestion de estilos de la aplicación.
 
+## UTILIZACION
+
+1. PERMITE REGISTRO DE USUARIOS CON CAMPOS EMAIL, NICKNAME, PASSWORD Y EDAD. CAMPOS EMAIL, PASSWORD Y EDAD REQUERIDOS. 
+2. LOGIN NECESARIO PARA PODER VER EL DETALLE DE CADA SERIE. 
+3. LIMITACION DE EDAD PARA SERIES DE ADULTOS.
 
 ## RECURSOS
 

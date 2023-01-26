@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '../../styles/Modal/ModalForm.scss';
 import {useNavigate} from 'react-router-dom'
 
+// Vista de Modal que se muestra cuando te has logueado. 
+
 function ModalLogin({title, body, setIsLoggedModal}) {
   const navigate = useNavigate();
   const [show, setShow] = useState(true);

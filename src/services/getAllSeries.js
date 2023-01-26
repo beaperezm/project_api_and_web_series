@@ -1,3 +1,5 @@
+// Llamada a la API para obtener todas las series. 
+
 const getAllSeries = () => {
     return fetch(`https://proyecto-react-api.vercel.app/series`)
         .then((res) => res.json())

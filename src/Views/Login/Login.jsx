@@ -1,9 +1,9 @@
 import React from "react";
-
-// ---- CAMBIADO A FormLogin
 import   '../../styles/Form/Login.scss';
 import FormLogin from '../../components/Form/FormLogin.jsx';
 import ButtonHome from "../../components/ButtonHome/ButtonHome.jsx";
+
+// Vista que incluye el formulario y el boton de Home. 
 
 function Login({ handleOptionInput, handleChangeLogin, user, handleResetValueLogin, setIsLogged, setUserLoggedEmail, setUserLoggedNickname, userLoggedNickname, userLoggedEmail, userLoggedAge, setUserLoggedAge, setIsRegistered, setIsLoggedModal}) {
     return (
